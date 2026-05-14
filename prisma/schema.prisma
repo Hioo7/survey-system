@@ -1,0 +1,156 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum FieldType {
+  SHORT_TEXT
+  LONG_TEXT
+  EMAIL
+  NUMBER
+  PHONE
+  MCQ
+  CHECKLIST
+  DROPDOWN
+  DATE
+  SECTION
+  SECTION_BREAK
+}
+
+enum FormStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model SuperUser {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Employee {
+  id          String            @id @default(cuid())
+  name        String
+  email       String            @unique
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  otps        EmployeeOTP[]
+  sessions    EmployeeSession[]
+  assignments FormAssignment[]
+  responses   FormResponse[]
+}
+
+model EmployeeOTP {
+  id         String   @id @default(cuid())
+  employee   Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  employeeId String
+  code       String
+  expiresAt  DateTime
+  isUsed     Boolean  @default(false)
+  createdAt  DateTime @default(now())
+}
+
+model EmployeeSession {
+  id         String   @id @default(cuid())
+  employee   Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  employeeId String
+  validUntil DateTime
+  createdAt  DateTime @default(now())
+}
+
+model Form {
+  id          String           @id @default(cuid())
+  title       String
+  description String           @default("")
+  status      FormStatus       @default(DRAFT)
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  fields      FormField[]
+  versions    FormVersion[]
+  assignments FormAssignment[]
+}
+
+model FormField {
+  id                  String    @id @default(cuid())
+  form                Form      @relation(fields: [formId], references: [id], onDelete: Cascade)
+  formId              String
+  type                FieldType
+  order               Int
+  label               String?
+  description         String?
+  required            Boolean   @default(false)
+  placeholder         String?
+  sectionTitle        String?
+  sectionDescription  String?
+  options             String[]
+  validationMinLength Int?
+  validationMaxLength Int?
+  validationMin       Float?
+  validationMax       Float?
+
+  @@index([formId, order])
+}
+
+model FormVersion {
+  id            String             @id @default(cuid())
+  form          Form               @relation(fields: [formId], references: [id], onDelete: Cascade)
+  formId        String
+  versionNumber Int
+  publishedAt   DateTime           @default(now())
+  fields        FormVersionField[]
+  responses     FormResponse[]
+
+  @@unique([formId, versionNumber])
+}
+
+model FormVersionField {
+  id                  String      @id @default(cuid())
+  version             FormVersion @relation(fields: [versionId], references: [id], onDelete: Cascade)
+  versionId           String
+  type                FieldType
+  order               Int
+  label               String?
+  description         String?
+  required            Boolean     @default(false)
+  placeholder         String?
+  sectionTitle        String?
+  sectionDescription  String?
+  options             String[]
+  validationMinLength Int?
+  validationMaxLength Int?
+  validationMin       Float?
+  validationMax       Float?
+
+  @@index([versionId, order])
+}
+
+model FormAssignment {
+  id         String   @id @default(cuid())
+  form       Form     @relation(fields: [formId], references: [id], onDelete: Cascade)
+  formId     String
+  employee   Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  employeeId String
+  assignedAt DateTime @default(now())
+
+  @@unique([formId, employeeId])
+}
+
+model FormResponse {
+  id          String      @id @default(cuid())
+  version     FormVersion @relation(fields: [versionId], references: [id], onDelete: Cascade)
+  versionId   String
+  employee    Employee    @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  employeeId  String
+  answers     Json
+  latitude    Float
+  longitude   Float
+  submittedAt DateTime    @default(now())
+
+  @@unique([versionId, employeeId])
+}
