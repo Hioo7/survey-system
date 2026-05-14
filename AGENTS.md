@@ -78,3 +78,14 @@ Before considering any UI feature done, verify:
 - [ ] All interactive states (hover, focus, active, disabled) are implemented
 - [ ] Loading and error states are handled and displayed
 - [ ] No layout overflow or horizontal scroll on any viewport
+
+# Change Validation Rules
+
+## Mandatory Post-Change Checks
+
+After **every** code change — no exceptions — you must run both checks before considering the task complete:
+
+1. **Lint:** `npm run lint` — must pass with **zero errors and zero warnings**
+2. **Build:** `npm run build` — must pass with **zero errors**
+
+Both must pass cleanly. If either fails or reports warnings, fix all issues before marking the task done. Do not skip or defer these checks.

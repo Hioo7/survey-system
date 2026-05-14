@@ -62,6 +62,28 @@ export async function hasEmployeeSubmitted(
   return existing !== null
 }
 
+export async function updateResponse(
+  responseId: string,
+  answers: FormAnswers,
+): Promise<FormResponseDTO> {
+  const response = await db.formResponse.update({
+    where: { id: responseId },
+    data: { answers },
+    include: { employee: true },
+  })
+  return {
+    id: response.id,
+    versionId: response.versionId,
+    employeeId: response.employeeId,
+    employeeName: response.employee.name,
+    employeeEmail: response.employee.email,
+    answers: response.answers as FormAnswers,
+    latitude: response.latitude,
+    longitude: response.longitude,
+    submittedAt: response.submittedAt.toISOString(),
+  }
+}
+
 export async function getResponsesForVersion(versionId: string): Promise<FormResponseDTO[]> {
   const responses = await db.formResponse.findMany({
     where: { versionId },

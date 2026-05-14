@@ -17,8 +17,12 @@ import {
   setFormAssignments,
   getAssignedEmployeeIds,
 } from '../services/form-assignment.service'
-import { getResponsesForForm } from '../services/form-response.service'
+import { getResponsesForForm, updateResponse } from '../services/form-response.service'
+import { buildAnswerSchema } from '../schemas/form-response.schema'
+import { isInputField } from '../schemas/form-field.types'
+import { getVersionById } from '../services/form-version.service'
 import type { FieldDTO } from '../schemas/form-field.types'
+import type { FormAnswers } from '../schemas/form-field.types'
 import type { FormResponseByVersionDTO } from '../services/form-response.service'
 
 export type FormActionResult = {
@@ -181,4 +185,46 @@ export async function getFormResponsesAction(
 ): Promise<FormResponseByVersionDTO[]> {
   await requireSuperUser()
   return getResponsesForForm(formId)
+}
+
+export type UpdateFormResponseActionResult = {
+  success?: boolean
+  error?: string
+  fieldErrors?: Record<string, string[]>
+}
+
+export async function updateFormResponseAction(
+  _prevState: UpdateFormResponseActionResult,
+  formData: FormData,
+): Promise<UpdateFormResponseActionResult> {
+  await requireSuperUser()
+
+  const responseId = formData.get('responseId')
+  const versionId = formData.get('versionId')
+  if (!responseId || typeof responseId !== 'string') return { error: 'Invalid response' }
+  if (!versionId || typeof versionId !== 'string') return { error: 'Invalid version' }
+
+  const version = await getVersionById(versionId)
+  if (!version) return { error: 'Form version not found' }
+
+  const inputFields = version.fields.filter(isInputField)
+  const answers: FormAnswers = {}
+  for (const field of inputFields) {
+    answers[field.id] = field.type === 'CHECKLIST'
+      ? formData.getAll(field.id) as string[]
+      : (formData.get(field.id) as string) ?? ''
+  }
+
+  const parsed = buildAnswerSchema(inputFields).safeParse(answers)
+  if (!parsed.success) {
+    return { fieldErrors: parsed.error.flatten().fieldErrors as Record<string, string[]> }
+  }
+
+  try {
+    await updateResponse(responseId, parsed.data as FormAnswers)
+    revalidatePath('/staff/dashboard')
+    return { success: true }
+  } catch {
+    return { error: 'Failed to update response. Please try again.' }
+  }
 }

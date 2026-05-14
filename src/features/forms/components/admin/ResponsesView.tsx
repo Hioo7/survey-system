@@ -1,11 +1,12 @@
 'use client'
 
-import { useEffect, useState, useTransition } from 'react'
-import { FaArrowLeft, FaChevronDown, FaChevronUp, FaClipboardList, FaMapMarkerAlt, FaTimes } from 'react-icons/fa'
+import { useCallback, useEffect, useState, useTransition } from 'react'
+import { FaArrowLeft, FaChevronDown, FaChevronUp, FaClipboardList, FaMapMarkerAlt, FaPencilAlt, FaTimes } from 'react-icons/fa'
 import { getFormResponsesAction } from '@/features/forms/actions/form-admin.action'
 import type { FormDTO } from '@/features/forms/services/form.service'
-import type { FormResponseByVersionDTO } from '@/features/forms/services/form-response.service'
+import type { FormResponseByVersionDTO, FormResponseDTO } from '@/features/forms/services/form-response.service'
 import { FIELD_TYPE_LABELS, isInputField } from '@/features/forms/schemas/form-field.types'
+import { ResponseEditor } from './ResponseEditor'
 
 type ResponsesViewProps = {
   form: FormDTO
@@ -19,15 +20,18 @@ export function ResponsesView({ form, onBack }: ResponsesViewProps) {
   const [activeVersion, setActiveVersion] = useState(0)
   const [expandedId, setExpandedId] = useState<string | null>(null)
   const [locationModal, setLocationModal] = useState<LocationModal | null>(null)
+  const [editingResponse, setEditingResponse] = useState<FormResponseDTO | null>(null)
   const [isPending, startTransition] = useTransition()
 
-  useEffect(() => {
+  const fetchData = useCallback(() => {
     startTransition(async () => {
       const result = await getFormResponsesAction(form.id)
       setData(result)
       setActiveVersion(0)
     })
   }, [form.id])
+
+  useEffect(() => { fetchData() }, [fetchData])
 
   const versionData = data?.[activeVersion]
 
@@ -150,6 +154,17 @@ export function ResponsesView({ form, onBack }: ResponsesViewProps) {
                           >
                             <FaMapMarkerAlt className="text-xs" />
                           </button>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              setEditingResponse(resp)
+                            }}
+                            className="w-8 h-8 flex items-center justify-center rounded-full border border-slate-200 text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors shrink-0"
+                            title="Edit response"
+                          >
+                            <FaPencilAlt className="text-xs" />
+                          </button>
                           {isExpanded ? (
                             <FaChevronUp className="text-slate-400 text-xs shrink-0" />
                           ) : (
@@ -186,6 +201,15 @@ export function ResponsesView({ form, onBack }: ResponsesViewProps) {
             </>
           )}
         </>
+      )}
+      {editingResponse && versionData && (
+        <ResponseEditor
+          versionData={versionData.version}
+          response={editingResponse}
+          formTitle={form.title}
+          onBack={() => setEditingResponse(null)}
+          onSuccess={() => { setEditingResponse(null); fetchData() }}
+        />
       )}
       {locationModal && (
         <div
