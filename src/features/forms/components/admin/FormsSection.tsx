@@ -79,8 +79,8 @@ export function FormsSection({ initialForms, employees }: FormsSectionProps) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-xl font-semibold text-slate-900">Forms</h2>
-            <p className="text-sm text-slate-500 mt-0.5">
+            <h2 className="text-xl font-semibold text-roast">Forms</h2>
+            <p className="text-sm text-cocoa mt-0.5">
               {forms.length > 0
                 ? `${forms.length} form${forms.length !== 1 ? 's' : ''}`
                 : 'Create and manage survey forms'}
@@ -89,7 +89,7 @@ export function FormsSection({ initialForms, employees }: FormsSectionProps) {
           <button
             type="button"
             onClick={handleCreate}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 text-white text-sm font-medium hover:bg-slate-700 min-h-[44px] transition-colors shadow-sm"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-espresso text-white text-sm font-medium hover:bg-mocha min-h-[44px] transition-colors shadow-sm"
           >
             <FaPlus className="text-xs" />
             Create Form
@@ -99,17 +99,17 @@ export function FormsSection({ initialForms, employees }: FormsSectionProps) {
         {/* Empty state */}
         {forms.length === 0 && (
           <div className="flex flex-col items-center justify-center py-20 gap-4">
-            <div className="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center">
-              <FaClipboardList className="text-2xl text-slate-400" />
+            <div className="w-16 h-16 rounded-2xl bg-vanilla flex items-center justify-center">
+              <FaClipboardList className="text-2xl text-cocoa" />
             </div>
             <div className="text-center">
-              <p className="text-base font-medium text-slate-700">No forms yet</p>
-              <p className="text-sm text-slate-400 mt-1">Create your first survey form</p>
+              <p className="text-base font-medium text-mocha">No forms yet</p>
+              <p className="text-sm text-cocoa mt-1">Create your first survey form</p>
             </div>
             <button
               type="button"
               onClick={handleCreate}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 text-white text-sm font-medium hover:bg-slate-700 min-h-[44px] transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-espresso text-white text-sm font-medium hover:bg-mocha min-h-[44px] transition-colors"
             >
               <FaPlus className="text-xs" />
               Create Form

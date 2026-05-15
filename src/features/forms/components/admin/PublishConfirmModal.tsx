@@ -37,11 +37,11 @@ export function PublishConfirmModal({
       <form action={formAction} className="flex flex-col gap-5">
         <input type="hidden" name="id" value={form.id} />
 
-        <div className="flex gap-3 p-4 bg-blue-50 rounded-xl border border-blue-100">
-          <FaInfoCircle className="text-blue-500 shrink-0 mt-0.5" />
-          <div className="text-sm text-blue-700">
+        <div className="flex gap-3 p-4 bg-vanilla rounded-xl border border-foam">
+          <FaInfoCircle className="text-caramel shrink-0 mt-0.5" />
+          <div className="text-sm text-mocha">
             <p className="font-medium">Publishing creates a new version snapshot.</p>
-            <p className="mt-1 text-blue-600">
+            <p className="mt-1 text-cocoa">
               Employees who already submitted v{form._count.versions} will need to submit the
               new version. Previous responses are preserved.
             </p>

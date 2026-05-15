@@ -21,9 +21,9 @@ type InstallModalProps = {
 }
 
 const benefits = [
-  { icon: <FaBolt className="text-slate-500 text-sm shrink-0" />, text: 'Instant access from your home screen' },
-  { icon: <FaWifi className="text-slate-500 text-sm shrink-0" />, text: 'Works offline after first visit' },
-  { icon: <FaMobileAlt className="text-slate-500 text-sm shrink-0" />, text: 'Native app feel, no app store needed' },
+  { icon: <FaBolt className="text-cocoa text-sm shrink-0" />, text: 'Instant access from your home screen' },
+  { icon: <FaWifi className="text-cocoa text-sm shrink-0" />, text: 'Works offline after first visit' },
+  { icon: <FaMobileAlt className="text-cocoa text-sm shrink-0" />, text: 'Native app feel, no app store needed' },
 ]
 
 export function InstallModal({
@@ -46,37 +46,37 @@ export function InstallModal({
       <div className="flex flex-col gap-6">
         {/* App identity */}
         <div className="flex items-center gap-4">
-          <div className="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-slate-900/20">
+          <div className="w-16 h-16 bg-espresso rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-espresso/20">
             <FaClipboardList className="text-white text-2xl" />
           </div>
           <div className="flex flex-col gap-0.5">
-            <span className="text-base font-semibold text-slate-900">Staff Portal</span>
-            <span className="text-sm text-slate-500 leading-snug">
+            <span className="text-base font-semibold text-roast">Staff Portal</span>
+            <span className="text-sm text-cocoa leading-snug">
               Survey & form management for your team
             </span>
           </div>
         </div>
 
         {/* Divider */}
-        <div className="h-px bg-slate-100" />
+        <div className="h-px bg-foam" />
 
         {/* Benefits list */}
         <div className="flex flex-col gap-3">
           {benefits.map(({ icon, text }) => (
             <div key={text} className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0">
+              <div className="w-8 h-8 rounded-lg bg-vanilla border border-foam flex items-center justify-center shrink-0">
                 {icon}
               </div>
-              <span className="text-sm text-slate-600">{text}</span>
+              <span className="text-sm text-cocoa">{text}</span>
             </div>
           ))}
         </div>
 
         {/* State: already installed */}
         {isInstalled && (
-          <div className="flex items-center gap-3 p-4 bg-slate-50 border border-slate-200 rounded-xl">
-            <FaCheckCircle className="text-slate-700 text-base shrink-0" />
-            <span className="text-sm font-medium text-slate-700">
+          <div className="flex items-center gap-3 p-4 bg-vanilla border border-foam rounded-xl">
+            <FaCheckCircle className="text-mocha text-base shrink-0" />
+            <span className="text-sm font-medium text-mocha">
               Staff Portal is already installed on this device.
             </span>
           </div>
@@ -84,13 +84,13 @@ export function InstallModal({
 
         {/* State: browser doesn't support install prompt */}
         {!canInstall && !isInstalled && (
-          <div className="flex items-start gap-3 p-4 bg-slate-50 border border-slate-200 rounded-xl">
-            <FaInfoCircle className="text-slate-500 text-base shrink-0 mt-0.5" />
+          <div className="flex items-start gap-3 p-4 bg-vanilla border border-foam rounded-xl">
+            <FaInfoCircle className="text-cocoa text-base shrink-0 mt-0.5" />
             <div className="flex flex-col gap-1">
-              <span className="text-sm font-medium text-slate-700">
+              <span className="text-sm font-medium text-mocha">
                 Your browser doesn&apos;t support direct install
               </span>
-              <span className="text-xs text-slate-500 leading-relaxed flex items-center gap-1.5">
+              <span className="text-xs text-cocoa leading-relaxed flex items-center gap-1.5">
                 <FaChrome className="shrink-0" />
                 Use Chrome on Android or Edge on desktop to install this app.
               </span>
@@ -105,7 +105,7 @@ export function InstallModal({
               type="button"
               onClick={handleInstall}
               disabled={isInstalling}
-              className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 min-h-[48px] bg-slate-900 hover:bg-slate-700 active:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-sm rounded-xl shadow-sm transition-colors duration-150"
+              className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 min-h-[48px] bg-espresso hover:bg-mocha active:bg-caramel-burnt disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-sm rounded-xl shadow-sm transition-colors duration-150"
             >
               <FaMobileAlt />
               {isInstalling ? 'Installing…' : 'Install App'}
@@ -114,7 +114,7 @@ export function InstallModal({
           <button
             type="button"
             onClick={onClose}
-            className="flex-1 inline-flex items-center justify-center px-5 py-3 min-h-[48px] bg-white hover:bg-slate-50 active:bg-slate-100 text-slate-600 font-semibold text-sm rounded-xl border border-slate-200 transition-colors duration-150"
+            className="flex-1 inline-flex items-center justify-center px-5 py-3 min-h-[48px] bg-cream hover:bg-vanilla active:bg-foam text-cocoa font-semibold text-sm rounded-xl border border-foam transition-colors duration-150"
           >
             {isInstalled ? 'Close' : 'Not Now'}
           </button>

@@ -57,20 +57,20 @@ export function FormCard({
   const isPublished = form.status === 'PUBLISHED'
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-100 shadow-sm flex flex-col gap-0 overflow-hidden">
+    <div className="bg-cream rounded-2xl border border-foam shadow-sm flex flex-col gap-0 overflow-hidden">
       {/* Header */}
       <div className="px-5 pt-5 pb-3 flex items-start justify-between gap-3">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
-            <h3 className="font-semibold text-slate-900 text-base leading-snug truncate">
+            <h3 className="font-semibold text-roast text-base leading-snug truncate">
               {form.title}
             </h3>
             <span
               className={[
                 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium whitespace-nowrap',
                 isPublished
-                  ? 'bg-green-100 text-green-700'
-                  : 'bg-slate-100 text-slate-600',
+                  ? 'bg-gold-light text-gold-dark'
+                  : 'bg-vanilla text-cocoa',
               ].join(' ')}
             >
               {isPublished ? 'Published' : 'Draft'}
@@ -82,17 +82,17 @@ export function FormCard({
       {/* Description */}
       <div className="px-5 pb-3">
         {form.description ? (
-          <p className="text-sm text-slate-500 line-clamp-2 leading-relaxed">
+          <p className="text-sm text-cocoa line-clamp-2 leading-relaxed">
             {form.description}
           </p>
         ) : (
-          <p className="text-sm text-slate-300 italic">No description</p>
+          <p className="text-sm text-foam italic">No description</p>
         )}
       </div>
 
       {/* Meta */}
       <div className="px-5 pb-4">
-        <p className="text-xs text-slate-400">
+        <p className="text-xs text-cocoa">
           {form.fields.length} field{form.fields.length !== 1 ? 's' : ''} ·{' '}
           {form._count.assignments} employee{form._count.assignments !== 1 ? 's' : ''} ·{' '}
           {isPublished ? `v${form._count.versions}` : 'unpublished'} · {createdDate}
@@ -108,7 +108,7 @@ export function FormCard({
       )}
 
       {/* Actions */}
-      <div className="border-t border-slate-100 px-4 py-3 flex items-center gap-1">
+      <div className="border-t border-foam px-4 py-3 flex items-center gap-1">
         {!confirmDelete ? (
           <>
             <ActionBtn label="Edit" onClick={() => onEdit(form)}>
@@ -142,11 +142,11 @@ export function FormCard({
           </>
         ) : (
           <div className="flex items-center gap-2 w-full">
-            <span className="text-xs text-slate-600 flex-1">Delete this form?</span>
+            <span className="text-xs text-cocoa flex-1">Delete this form?</span>
             <button
               type="button"
               onClick={() => setConfirmDelete(false)}
-              className="text-xs px-3 py-1.5 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 min-h-[32px]"
+              className="text-xs px-3 py-1.5 rounded-lg border border-foam text-cocoa hover:bg-vanilla min-h-[32px]"
             >
               Cancel
             </button>
@@ -186,7 +186,7 @@ function ActionBtn({
       disabled={disabled}
       className={[
         'w-9 h-9 min-w-[36px] flex items-center justify-center rounded-xl',
-        'text-slate-400 hover:text-slate-700 hover:bg-slate-100',
+        'text-cocoa hover:text-mocha hover:bg-vanilla',
         'transition-colors duration-150 text-sm',
         className,
       ].join(' ')}

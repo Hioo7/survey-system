@@ -78,18 +78,18 @@ export function ResponseEditor({
   if (!mounted) return null
 
   return createPortal(
-    <div className="fixed inset-0 z-40 bg-slate-50 flex flex-col">
+    <div className="fixed inset-0 z-40 bg-vanilla flex flex-col">
       {/* Top bar */}
-      <div className="shrink-0 bg-white border-b border-slate-100 px-4 sm:px-6 py-3 flex items-center gap-3">
+      <div className="shrink-0 bg-cream border-b border-foam px-4 sm:px-6 py-3 flex items-center gap-3">
         <button
           type="button"
           onClick={onBack}
-          className="w-9 h-9 flex items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-100 shrink-0"
+          className="w-9 h-9 flex items-center justify-center rounded-xl border border-foam text-cocoa hover:bg-vanilla shrink-0"
         >
           <FaChevronLeft className="text-sm" />
         </button>
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-semibold text-slate-900 truncate">{formTitle}</p>
+          <p className="text-sm font-semibold text-roast truncate">{formTitle}</p>
           <p className="text-xs text-amber-600 font-medium truncate">
             Editing: {response.employeeName} · Page {currentPage + 1} of {totalPages}
           </p>
@@ -97,7 +97,7 @@ export function ResponseEditor({
       </div>
 
       {/* Progress bar — amber to signal edit mode */}
-      <div className="h-1 bg-slate-100">
+      <div className="h-1 bg-foam">
         <div
           className="h-full bg-amber-500 transition-all duration-300"
           style={{ width: `${progress}%` }}
@@ -121,7 +121,7 @@ export function ResponseEditor({
         className="flex flex-col"
       >
         <div className="px-4 sm:px-6 py-6 flex flex-col gap-4">
-          <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
+          <div className="bg-cream rounded-2xl border border-foam shadow-sm p-5">
             <FormPage
               fields={currentFields}
               answers={answers}
@@ -142,7 +142,7 @@ export function ResponseEditor({
               <button
                 type="button"
                 onClick={() => setCurrentPage((p) => p - 1)}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-700 hover:bg-slate-50 min-h-[44px]"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-foam text-sm font-medium text-mocha hover:bg-vanilla min-h-[44px]"
               >
                 <FaArrowLeft className="text-xs" />
                 Previous
@@ -154,7 +154,7 @@ export function ResponseEditor({
                 key="next"
                 type="button"
                 onClick={() => setCurrentPage((p) => p + 1)}
-                className="ml-auto inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 text-white text-sm font-medium hover:bg-slate-700 min-h-[44px] transition-colors"
+                className="ml-auto inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-espresso text-white text-sm font-medium hover:bg-mocha min-h-[44px] transition-colors"
               >
                 Next
                 <FaArrowRight className="text-xs" />
@@ -164,7 +164,7 @@ export function ResponseEditor({
                 key="update"
                 type="submit"
                 disabled={isPending}
-                className="ml-auto inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 text-white text-sm font-medium hover:bg-slate-700 disabled:opacity-50 min-h-[44px] transition-colors"
+                className="ml-auto inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-espresso text-white text-sm font-medium hover:bg-mocha disabled:opacity-50 min-h-[44px] transition-colors"
               >
                 {isPending ? (
                   <>

@@ -15,10 +15,10 @@ export function EmployeeLogoutConfirmModal({ isOpen, onClose }: EmployeeLogoutCo
     <Modal isOpen={isOpen} onClose={onClose} title="Logout?" size="sm">
       <div className="flex flex-col gap-6">
         <div className="flex items-start gap-4">
-          <div className="w-11 h-11 bg-slate-50 rounded-xl flex items-center justify-center shrink-0">
-            <FaSignOutAlt className="text-slate-500 text-lg" />
+          <div className="w-11 h-11 bg-vanilla rounded-xl flex items-center justify-center shrink-0">
+            <FaSignOutAlt className="text-cocoa text-lg" />
           </div>
-          <p className="text-slate-600 text-sm leading-relaxed pt-1">
+          <p className="text-cocoa text-sm leading-relaxed pt-1">
             You will be signed out and will need to request a new login code from your admin.
           </p>
         </div>

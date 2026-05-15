@@ -39,8 +39,8 @@ export function FieldListItem({
         'group flex items-center gap-2 px-3 py-2.5 cursor-pointer transition-all duration-150',
         'border-l-2',
         isSelected
-          ? 'bg-slate-100 border-l-slate-900'
-          : 'border-l-transparent hover:bg-slate-50 hover:border-l-slate-300',
+          ? 'bg-vanilla border-l-espresso'
+          : 'border-l-transparent hover:bg-cream hover:border-l-foam',
       ].join(' ')}
       onClick={onSelect}
     >
@@ -48,7 +48,7 @@ export function FieldListItem({
       <span
         className={[
           'text-sm shrink-0',
-          isSelected ? 'text-slate-600' : 'text-slate-400',
+          isSelected ? 'text-mocha' : 'text-cocoa',
         ].join(' ')}
       >
         {TYPE_ICONS[field.type]}
@@ -57,13 +57,13 @@ export function FieldListItem({
       {/* Label */}
       <div className="flex-1 min-w-0">
         {isSectionBreak ? (
-          <p className="text-xs text-slate-400 italic truncate">{displayLabel}</p>
+          <p className="text-xs text-cocoa italic truncate">{displayLabel}</p>
         ) : isSection ? (
-          <p className="text-sm font-semibold text-slate-700 truncate">{displayLabel}</p>
+          <p className="text-sm font-semibold text-mocha truncate">{displayLabel}</p>
         ) : (
-          <p className="text-sm text-slate-700 truncate">{displayLabel}</p>
+          <p className="text-sm text-mocha truncate">{displayLabel}</p>
         )}
-        <p className="text-xs text-slate-400">{FIELD_TYPE_LABELS[field.type]}</p>
+        <p className="text-xs text-cocoa">{FIELD_TYPE_LABELS[field.type]}</p>
       </div>
 
       {/* Controls — visible on hover/selected */}
@@ -78,7 +78,7 @@ export function FieldListItem({
           type="button"
           disabled={isFirst}
           onClick={() => onMove('up')}
-          className="w-6 h-6 flex items-center justify-center rounded text-slate-400 hover:text-slate-700 disabled:opacity-30 disabled:cursor-not-allowed"
+          className="w-6 h-6 flex items-center justify-center rounded text-cocoa hover:text-mocha disabled:opacity-30 disabled:cursor-not-allowed"
         >
           <FaChevronUp className="text-xs" />
         </button>
@@ -86,14 +86,14 @@ export function FieldListItem({
           type="button"
           disabled={isLast}
           onClick={() => onMove('down')}
-          className="w-6 h-6 flex items-center justify-center rounded text-slate-400 hover:text-slate-700 disabled:opacity-30 disabled:cursor-not-allowed"
+          className="w-6 h-6 flex items-center justify-center rounded text-cocoa hover:text-mocha disabled:opacity-30 disabled:cursor-not-allowed"
         >
           <FaChevronDown className="text-xs" />
         </button>
         <button
           type="button"
           onClick={onDelete}
-          className="w-6 h-6 flex items-center justify-center rounded text-slate-400 hover:text-red-500 ml-0.5"
+          className="w-6 h-6 flex items-center justify-center rounded text-cocoa hover:text-red-500 ml-0.5"
         >
           <FaTrash className="text-xs" />
         </button>

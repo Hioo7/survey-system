@@ -35,9 +35,9 @@ export function EmployeeLoginsTab({ initialOtps }: EmployeeLoginsTabProps) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <h3 className="font-semibold text-slate-800 text-sm">Pending Login Requests</h3>
+          <h3 className="font-semibold text-roast text-sm">Pending Login Requests</h3>
           {initialOtps.length > 0 && (
-            <span className="flex items-center justify-center w-5 h-5 rounded-full bg-slate-900 text-white text-xs font-bold">
+            <span className="flex items-center justify-center w-5 h-5 rounded-full bg-espresso text-white text-xs font-bold">
               {initialOtps.length}
             </span>
           )}
@@ -46,7 +46,7 @@ export function EmployeeLoginsTab({ initialOtps }: EmployeeLoginsTabProps) {
           type="button"
           onClick={handleRefresh}
           disabled={isPending}
-          className="flex items-center gap-1.5 px-3 py-2 min-h-[36px] rounded-xl bg-slate-100 hover:bg-slate-200 active:bg-slate-300 disabled:opacity-60 text-slate-600 text-xs font-medium transition-colors"
+          className="flex items-center gap-1.5 px-3 py-2 min-h-[36px] rounded-xl bg-vanilla hover:bg-foam active:bg-foam disabled:opacity-60 text-cocoa text-xs font-medium transition-colors"
         >
           <FaSync className={isPending ? 'animate-spin' : ''} style={{ fontSize: '10px' }} />
           Refresh
@@ -56,12 +56,12 @@ export function EmployeeLoginsTab({ initialOtps }: EmployeeLoginsTabProps) {
       {/* Content */}
       {initialOtps.length === 0 ? (
         <div className="flex flex-col items-center py-12 text-center gap-4">
-          <div className="w-16 h-16 bg-slate-50 border border-slate-100 rounded-2xl flex items-center justify-center">
-            <FaInbox className="text-slate-300 text-2xl" />
+          <div className="w-16 h-16 bg-vanilla border border-foam rounded-2xl flex items-center justify-center">
+            <FaInbox className="text-foam text-2xl" />
           </div>
           <div className="flex flex-col gap-1.5">
-            <p className="font-semibold text-slate-700 text-sm">No pending login requests</p>
-            <p className="text-slate-400 text-xs max-w-xs leading-relaxed">
+            <p className="font-semibold text-mocha text-sm">No pending login requests</p>
+            <p className="text-cocoa text-xs max-w-xs leading-relaxed">
               When an employee requests a code, it will appear here for you to share.
             </p>
           </div>

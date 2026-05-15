@@ -14,23 +14,23 @@ type FieldRendererProps = {
 
 const inputCls = (error?: string) =>
   [
-    'w-full rounded-xl border px-4 py-2.5 text-sm text-slate-900 min-h-[44px]',
-    'focus:outline-none focus:ring-2 focus:ring-slate-400 focus:border-slate-400',
-    'placeholder:text-slate-400 transition-colors duration-150',
+    'w-full rounded-xl border px-4 py-2.5 text-sm text-roast min-h-[44px]',
+    'focus:outline-none focus:ring-2 focus:ring-caramel focus:border-caramel',
+    'placeholder:text-cocoa transition-colors duration-150',
     error
       ? 'border-red-400 bg-red-50 focus:ring-red-400 focus:border-red-400'
-      : 'border-slate-200 hover:border-slate-300 bg-white',
+      : 'border-foam hover:border-caramel bg-cream',
   ].join(' ')
 
 export function FieldRenderer({ field, value, onChange, error, preview }: FieldRendererProps) {
   if (isSection(field)) {
     return (
       <div className="pb-1">
-        <h2 className="text-base font-semibold text-slate-800">
+        <h2 className="text-base font-semibold text-roast">
           {field.sectionTitle || 'Section'}
         </h2>
         {field.sectionDescription && (
-          <p className="text-sm text-slate-500 mt-1">{field.sectionDescription}</p>
+          <p className="text-sm text-cocoa mt-1">{field.sectionDescription}</p>
         )}
       </div>
     )
@@ -129,8 +129,8 @@ export function FieldRenderer({ field, value, onChange, error, preview }: FieldR
                   className={[
                     'flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all duration-150',
                     checked
-                      ? 'border-slate-900 bg-slate-50'
-                      : 'border-slate-200 hover:border-slate-300 bg-white',
+                      ? 'border-espresso bg-vanilla'
+                      : 'border-foam hover:border-caramel bg-cream',
                   ].join(' ')}
                 >
                   <input
@@ -145,12 +145,12 @@ export function FieldRenderer({ field, value, onChange, error, preview }: FieldR
                   <div
                     className={[
                       'w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0',
-                      checked ? 'border-slate-900' : 'border-slate-300',
+                      checked ? 'border-espresso' : 'border-foam',
                     ].join(' ')}
                   >
-                    {checked && <div className="w-2 h-2 rounded-full bg-slate-900" />}
+                    {checked && <div className="w-2 h-2 rounded-full bg-espresso" />}
                   </div>
-                  <span className="text-sm text-slate-700">{opt}</span>
+                  <span className="text-sm text-mocha">{opt}</span>
                 </label>
               )
             })}
@@ -168,8 +168,8 @@ export function FieldRenderer({ field, value, onChange, error, preview }: FieldR
                   className={[
                     'flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all duration-150',
                     checked
-                      ? 'border-slate-900 bg-slate-50'
-                      : 'border-slate-200 hover:border-slate-300 bg-white',
+                      ? 'border-espresso bg-vanilla'
+                      : 'border-foam hover:border-caramel bg-cream',
                   ].join(' ')}
                 >
                   <input
@@ -187,7 +187,7 @@ export function FieldRenderer({ field, value, onChange, error, preview }: FieldR
                   <div
                     className={[
                       'w-4 h-4 rounded border-2 flex items-center justify-center shrink-0',
-                      checked ? 'border-slate-900 bg-slate-900' : 'border-slate-300',
+                      checked ? 'border-espresso bg-espresso' : 'border-foam bg-cream',
                     ].join(' ')}
                   >
                     {checked && (
@@ -202,7 +202,7 @@ export function FieldRenderer({ field, value, onChange, error, preview }: FieldR
                       </svg>
                     )}
                   </div>
-                  <span className="text-sm text-slate-700">{opt}</span>
+                  <span className="text-sm text-mocha">{opt}</span>
                 </label>
               )
             })}
@@ -234,12 +234,12 @@ export function FieldRenderer({ field, value, onChange, error, preview }: FieldR
 
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-sm font-medium text-slate-700">
+      <label className="text-sm font-medium text-mocha">
         {field.label || 'Untitled Question'}
         {field.required && <span className="text-red-500 ml-0.5">*</span>}
       </label>
       {field.description && (
-        <p className="text-xs text-slate-500">{field.description}</p>
+        <p className="text-xs text-cocoa">{field.description}</p>
       )}
       {renderInput()}
       {error && (

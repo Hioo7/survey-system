@@ -40,8 +40,8 @@ export function UsersSection({
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <h1 className="text-2xl font-bold text-slate-900">Team Management</h1>
-        <p className="text-slate-500 text-sm mt-1">Manage your team members and access</p>
+        <h1 className="text-2xl font-bold text-roast">Team Management</h1>
+        <p className="text-cocoa text-sm mt-1">Manage your team members and access</p>
       </div>
 
       <Tabs tabs={SECTION_TABS} activeTab={activeTab} onTabChange={setActiveTab} />
@@ -50,11 +50,11 @@ export function UsersSection({
         <div className="flex flex-col gap-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <FaUsers className="text-slate-400" />
-              <span className="font-semibold text-slate-700 text-sm">
+              <FaUsers className="text-cocoa" />
+              <span className="font-semibold text-mocha text-sm">
                 Team Members
               </span>
-              <span className="text-xs text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full font-medium">
+              <span className="text-xs text-cocoa bg-vanilla px-2 py-0.5 rounded-full font-medium">
                 {initialEmployees.length}
               </span>
             </div>
@@ -65,12 +65,12 @@ export function UsersSection({
 
           {initialEmployees.length === 0 ? (
             <div className="flex flex-col items-center py-20 text-center gap-5">
-              <div className="w-20 h-20 bg-slate-100 rounded-2xl flex items-center justify-center">
-                <FaUserSlash className="text-slate-400 text-3xl" />
+              <div className="w-20 h-20 bg-vanilla rounded-2xl flex items-center justify-center">
+                <FaUserSlash className="text-cocoa text-3xl" />
               </div>
               <div className="flex flex-col gap-1.5">
-                <h3 className="font-semibold text-slate-700 text-lg">No team members yet</h3>
-                <p className="text-slate-400 text-sm">Add your first employee to get started</p>
+                <h3 className="font-semibold text-mocha text-lg">No team members yet</h3>
+                <p className="text-cocoa text-sm">Add your first employee to get started</p>
               </div>
               <Button variant="primary" icon={<FaPlus />} onClick={openCreate}>
                 Add your first employee

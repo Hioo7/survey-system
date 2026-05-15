@@ -134,13 +134,13 @@ export function FormBuilder({ form, onClose, onSaved }: FormBuilderProps) {
   }, [])
 
   const builderContent = (
-    <div className="fixed inset-0 z-40 bg-white flex flex-col">
+    <div className="fixed inset-0 z-40 bg-cream flex flex-col">
       {/* Top bar */}
-      <div className="shrink-0 bg-white border-b border-slate-100 px-4 sm:px-6 py-3 flex items-center gap-3">
+      <div className="shrink-0 bg-cream border-b border-foam px-4 sm:px-6 py-3 flex items-center gap-3">
         <button
           type="button"
           onClick={onClose}
-          className="w-9 h-9 flex items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-100 transition-colors shrink-0"
+          className="w-9 h-9 flex items-center justify-center rounded-xl border border-foam text-cocoa hover:bg-vanilla transition-colors shrink-0"
         >
           <FaArrowLeft className="text-sm" />
         </button>
@@ -151,14 +151,14 @@ export function FormBuilder({ form, onClose, onSaved }: FormBuilderProps) {
             value={title}
             onChange={(e) => handleTitleChange(e.target.value)}
             placeholder="Untitled Form"
-            className="w-full text-base font-semibold text-slate-900 bg-transparent border-none outline-none placeholder:text-slate-300 truncate"
+            className="w-full text-base font-semibold text-roast bg-transparent border-none outline-none placeholder:text-foam truncate"
           />
           <input
             type="text"
             value={description}
             onChange={(e) => handleDescChange(e.target.value)}
             placeholder="Add a description…"
-            className="w-full text-xs text-slate-400 bg-transparent border-none outline-none placeholder:text-slate-300 mt-0.5"
+            className="w-full text-xs text-cocoa bg-transparent border-none outline-none placeholder:text-foam mt-0.5"
           />
         </div>
 
@@ -171,7 +171,7 @@ export function FormBuilder({ form, onClose, onSaved }: FormBuilderProps) {
             type="button"
             onClick={handleSave}
             disabled={isPending}
-            className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50 min-h-[44px] transition-colors"
+            className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-foam text-sm font-medium text-mocha hover:bg-vanilla disabled:opacity-50 min-h-[44px] transition-colors"
           >
             <FaSave className="text-sm" />
             {isPending ? 'Saving…' : 'Save Draft'}
@@ -180,7 +180,7 @@ export function FormBuilder({ form, onClose, onSaved }: FormBuilderProps) {
             type="button"
             onClick={handleSave}
             disabled={isPending}
-            className="sm:hidden w-9 h-9 flex items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-100 disabled:opacity-50"
+            className="sm:hidden w-9 h-9 flex items-center justify-center rounded-xl border border-foam text-cocoa hover:bg-vanilla disabled:opacity-50"
           >
             <FaSave className="text-sm" />
           </button>
@@ -188,7 +188,7 @@ export function FormBuilder({ form, onClose, onSaved }: FormBuilderProps) {
             <button
               type="button"
               onClick={() => setShowPublish(true)}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 text-white text-sm font-medium hover:bg-slate-700 min-h-[44px] transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-espresso text-white text-sm font-medium hover:bg-mocha min-h-[44px] transition-colors"
             >
               <FaRocket className="text-sm" />
               <span className="hidden sm:inline">Publish</span>
@@ -206,7 +206,7 @@ export function FormBuilder({ form, onClose, onSaved }: FormBuilderProps) {
       )}
 
       {/* Mobile tab bar */}
-      <div className="shrink-0 lg:hidden flex border-b border-slate-100">
+      <div className="shrink-0 lg:hidden flex border-b border-foam">
         {(['fields', 'edit', 'preview'] as MobileTab[]).map((tab) => (
           <button
             key={tab}
@@ -214,11 +214,11 @@ export function FormBuilder({ form, onClose, onSaved }: FormBuilderProps) {
             onClick={() => setMobileTab(tab)}
             className={[
               'flex-1 py-3 text-sm font-medium capitalize transition-colors relative',
-              mobileTab === tab ? 'text-slate-900' : 'text-slate-400 hover:text-slate-600',
+              mobileTab === tab ? 'text-roast' : 'text-cocoa hover:text-mocha',
             ].join(' ')}
           >
             {mobileTab === tab && (
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-10 h-0.5 bg-slate-900 rounded-full" />
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-10 h-0.5 bg-espresso rounded-full" />
             )}
             {tab === 'edit' ? 'Editor' : tab.charAt(0).toUpperCase() + tab.slice(1)}
           </button>
@@ -230,7 +230,7 @@ export function FormBuilder({ form, onClose, onSaved }: FormBuilderProps) {
         {/* LEFT: Field list */}
         <div
           className={[
-            'border-r border-slate-100 overflow-hidden',
+            'border-r border-foam overflow-hidden',
             'lg:w-64 lg:flex lg:flex-col',
             mobileTab === 'fields' ? 'flex flex-col w-full' : 'hidden',
           ].join(' ')}
@@ -264,8 +264,8 @@ export function FormBuilder({ form, onClose, onSaved }: FormBuilderProps) {
             />
           ) : (
             <div className="flex flex-col items-center justify-center h-full p-8 text-center">
-              <p className="text-sm text-slate-400">Select a field to edit it</p>
-              <p className="text-xs text-slate-300 mt-1">
+              <p className="text-sm text-cocoa">Select a field to edit it</p>
+              <p className="text-xs text-foam mt-1">
                 Or add a new field using the button in the Fields panel
               </p>
             </div>
@@ -275,7 +275,7 @@ export function FormBuilder({ form, onClose, onSaved }: FormBuilderProps) {
         {/* RIGHT: Preview */}
         <div
           className={[
-            'bg-slate-50 border-l border-slate-100 overflow-hidden',
+            'bg-vanilla border-l border-foam overflow-hidden',
             'lg:w-72 lg:flex lg:flex-col',
             mobileTab === 'preview' ? 'flex flex-col w-full' : 'hidden',
           ].join(' ')}

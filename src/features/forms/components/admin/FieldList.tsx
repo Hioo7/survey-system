@@ -23,8 +23,8 @@ export function FieldList({
 }: FieldListProps) {
   return (
     <div className="flex flex-col h-full">
-      <div className="px-3 py-3 border-b border-slate-100">
-        <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+      <div className="px-3 py-3 border-b border-foam">
+        <p className="text-xs font-semibold text-cocoa uppercase tracking-wider">
           Fields ({fields.length})
         </p>
       </div>
@@ -32,8 +32,8 @@ export function FieldList({
       <div className="flex-1 overflow-y-auto">
         {fields.length === 0 ? (
           <div className="px-4 py-8 text-center">
-            <p className="text-xs text-slate-400">No fields yet.</p>
-            <p className="text-xs text-slate-400">Click below to add one.</p>
+            <p className="text-xs text-cocoa">No fields yet.</p>
+            <p className="text-xs text-cocoa">Click below to add one.</p>
           </div>
         ) : (
           fields.map((field, idx) => (
@@ -51,11 +51,11 @@ export function FieldList({
         )}
       </div>
 
-      <div className="p-3 border-t border-slate-100">
+      <div className="p-3 border-t border-foam">
         <button
           type="button"
           onClick={onAddField}
-          className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-dashed border-slate-300 text-sm text-slate-500 hover:border-slate-500 hover:text-slate-700 hover:bg-slate-50 transition-all duration-150 min-h-[44px]"
+          className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-dashed border-foam text-sm text-cocoa hover:border-espresso hover:text-mocha hover:bg-vanilla transition-all duration-150 min-h-[44px]"
         >
           <FaPlus className="text-xs" />
           Add Field

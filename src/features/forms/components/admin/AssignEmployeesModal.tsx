@@ -85,30 +85,30 @@ export function AssignEmployeesModal({
         className="flex flex-col gap-4"
       >
         {/* Count */}
-        <div className="flex items-center gap-2 text-sm text-slate-500">
-          <FaUserCheck className="text-slate-400" />
+        <div className="flex items-center gap-2 text-sm text-cocoa">
+          <FaUserCheck className="text-cocoa" />
           <span>
-            <strong className="text-slate-800">{selected.size}</strong> of{' '}
+            <strong className="text-roast">{selected.size}</strong> of{' '}
             {employees.length} selected
           </span>
         </div>
 
         {/* Search */}
         <div className="relative">
-          <FaSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm" />
+          <FaSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 text-cocoa text-sm" />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search employees…"
-            className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:border-slate-400 min-h-[44px] placeholder:text-slate-400"
+            className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-foam bg-cream text-sm text-roast focus:outline-none focus:ring-2 focus:ring-caramel focus:border-caramel min-h-[44px] placeholder:text-cocoa"
           />
         </div>
 
         {/* List */}
         <div className="max-h-64 overflow-y-auto flex flex-col gap-1 -mx-1 px-1">
           {filtered.length === 0 ? (
-            <p className="text-sm text-slate-400 text-center py-6">No employees found</p>
+            <p className="text-sm text-cocoa text-center py-6">No employees found</p>
           ) : (
             filtered.map((emp) => {
               const isChecked = selected.has(emp.id)
@@ -117,18 +117,18 @@ export function AssignEmployeesModal({
                   key={emp.id}
                   className={[
                     'flex items-center gap-3 px-3 py-2.5 rounded-xl cursor-pointer transition-colors duration-150',
-                    isChecked ? 'bg-slate-100' : 'hover:bg-slate-50',
+                    isChecked ? 'bg-vanilla' : 'hover:bg-cream',
                   ].join(' ')}
                 >
                   <input
                     type="checkbox"
                     checked={isChecked}
                     onChange={() => toggle(emp.id)}
-                    className="w-4 h-4 rounded accent-slate-900 shrink-0"
+                    className="w-4 h-4 rounded accent-espresso shrink-0"
                   />
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-slate-800 truncate">{emp.name}</p>
-                    <p className="text-xs text-slate-500 truncate">{emp.email}</p>
+                    <p className="text-sm font-medium text-roast truncate">{emp.name}</p>
+                    <p className="text-xs text-cocoa truncate">{emp.email}</p>
                   </div>
                 </label>
               )

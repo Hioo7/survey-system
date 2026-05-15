@@ -60,8 +60,8 @@ export function AdminEditRequestsSection({ initialOpenRequests, initialClosedReq
     <div className="flex flex-col gap-6">
       {/* Header */}
       <div>
-        <h2 className="text-xl font-semibold text-slate-900">Edit Requests</h2>
-        <p className="text-sm text-slate-500 mt-0.5">
+        <h2 className="text-xl font-semibold text-roast">Edit Requests</h2>
+        <p className="text-sm text-cocoa mt-0.5">
           Correction requests raised by employees
         </p>
       </div>
@@ -72,7 +72,7 @@ export function AdminEditRequestsSection({ initialOpenRequests, initialClosedReq
         <>
           {openRequests.length === 0 ? (
             <EmptyState
-              icon={<FaInbox className="text-4xl text-slate-200" />}
+              icon={<FaInbox className="text-4xl text-foam" />}
               message="No open requests. All caught up!"
             />
           ) : (
@@ -80,16 +80,16 @@ export function AdminEditRequestsSection({ initialOpenRequests, initialClosedReq
               {openRequests.map((req) => (
                 <RequestCard key={req.id}>
                   <RequestCardHeader req={req} />
-                  <p className="text-sm text-slate-700 leading-relaxed line-clamp-3 mt-1">
+                  <p className="text-sm text-mocha leading-relaxed line-clamp-3 mt-1">
                     {req.description}
                   </p>
-                  <div className="flex items-center justify-between mt-3 pt-3 border-t border-slate-100">
-                    <p className="text-xs text-slate-400">{formatDate(req.createdAt)}</p>
+                  <div className="flex items-center justify-between mt-3 pt-3 border-t border-foam">
+                    <p className="text-xs text-cocoa">{formatDate(req.createdAt)}</p>
                     <button
                       type="button"
                       onClick={() => handleClose(req.id)}
                       disabled={isPending && closingId === req.id}
-                      className="flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 text-white text-sm font-medium hover:bg-emerald-700 active:bg-emerald-800 transition-colors min-h-[44px] disabled:opacity-60"
+                      className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gold-dark text-white text-sm font-medium hover:bg-gold active:bg-gold-dark transition-colors min-h-[44px] disabled:opacity-60"
                     >
                       <FaCheckCircle className="text-xs shrink-0" />
                       {isPending && closingId === req.id ? 'Resolving…' : 'Mark Resolved'}
@@ -106,7 +106,7 @@ export function AdminEditRequestsSection({ initialOpenRequests, initialClosedReq
         <>
           {closedRequests.length === 0 ? (
             <EmptyState
-              icon={<FaArchive className="text-4xl text-slate-200" />}
+              icon={<FaArchive className="text-4xl text-foam" />}
               message="No closed requests yet."
             />
           ) : (
@@ -114,14 +114,14 @@ export function AdminEditRequestsSection({ initialOpenRequests, initialClosedReq
               {closedRequests.map((req) => (
                 <RequestCard key={req.id}>
                   <RequestCardHeader req={req} />
-                  <p className="text-sm text-slate-700 leading-relaxed line-clamp-3 mt-1">
+                  <p className="text-sm text-mocha leading-relaxed line-clamp-3 mt-1">
                     {req.description}
                   </p>
-                  <div className="flex items-center justify-between mt-3 pt-3 border-t border-slate-100">
-                    <p className="text-xs text-slate-400">
+                  <div className="flex items-center justify-between mt-3 pt-3 border-t border-foam">
+                    <p className="text-xs text-cocoa">
                       Opened {formatDate(req.createdAt)}
                     </p>
-                    <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-medium">
+                    <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gold-light text-gold-dark text-xs font-medium">
                       <FaCheckCircle className="text-[10px]" />
                       Resolved {req.closedAt ? formatDate(req.closedAt) : ''}
                     </span>
@@ -138,7 +138,7 @@ export function AdminEditRequestsSection({ initialOpenRequests, initialClosedReq
 
 function RequestCard({ children }: { children: React.ReactNode }) {
   return (
-    <div className="bg-white rounded-2xl border border-slate-100 shadow-sm px-5 py-4">
+    <div className="bg-cream rounded-2xl border border-foam shadow-sm px-5 py-4">
       {children}
     </div>
   )
@@ -148,15 +148,15 @@ function RequestCardHeader({ req }: { req: EditRequestDTO }) {
   const initial = req.employeeName.charAt(0).toUpperCase()
   return (
     <div className="flex items-center gap-3">
-      <div className="w-9 h-9 rounded-full bg-slate-900 text-white flex items-center justify-center text-sm font-semibold shrink-0">
+      <div className="w-9 h-9 rounded-full bg-espresso text-white flex items-center justify-center text-sm font-semibold shrink-0">
         {initial}
       </div>
       <div className="flex-1 min-w-0">
-        <p className="text-sm font-medium text-slate-800 truncate">{req.employeeName}</p>
-        <p className="text-xs text-slate-400 truncate">{req.employeeEmail}</p>
+        <p className="text-sm font-medium text-roast truncate">{req.employeeName}</p>
+        <p className="text-xs text-cocoa truncate">{req.employeeEmail}</p>
       </div>
       <div className="shrink-0 text-right">
-        <p className="text-xs text-slate-500 font-medium truncate max-w-[120px]">{req.formTitle}</p>
+        <p className="text-xs text-cocoa font-medium truncate max-w-[120px]">{req.formTitle}</p>
       </div>
     </div>
   )
@@ -166,7 +166,7 @@ function EmptyState({ icon, message }: { icon: React.ReactNode; message: string 
   return (
     <div className="flex flex-col items-center justify-center py-16 gap-3">
       {icon}
-      <p className="text-sm text-slate-400">{message}</p>
+      <p className="text-sm text-cocoa">{message}</p>
     </div>
   )
 }

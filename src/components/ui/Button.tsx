@@ -20,13 +20,13 @@ type ButtonProps = {
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    'bg-slate-900 hover:bg-slate-700 active:bg-slate-600 text-white border-transparent shadow-sm',
+    'bg-espresso hover:bg-mocha active:bg-caramel-burnt text-white border-transparent shadow-sm',
   secondary:
-    'bg-white hover:bg-slate-50 active:bg-slate-100 text-slate-700 border-slate-200 shadow-sm',
+    'bg-cream hover:bg-vanilla active:bg-foam text-mocha border-foam shadow-sm',
   danger:
-    'bg-white hover:bg-slate-50 active:bg-slate-100 text-slate-700 border-slate-300 shadow-sm',
+    'bg-cream hover:bg-vanilla active:bg-foam text-roast border-foam shadow-sm',
   ghost:
-    'bg-transparent hover:bg-slate-100 active:bg-slate-200 text-slate-600 border-transparent',
+    'bg-transparent hover:bg-vanilla active:bg-foam text-cocoa border-transparent',
 }
 
 const sizeClasses: Record<ButtonSize, string> = {

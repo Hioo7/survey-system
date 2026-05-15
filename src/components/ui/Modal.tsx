@@ -51,19 +51,19 @@ export function Modal({ isOpen, onClose, title, children, size = 'md', hideClose
       <div
         ref={panelRef}
         className={[
-          'relative w-full bg-white rounded-2xl shadow-2xl',
-          'border border-slate-100',
+          'relative w-full bg-cream rounded-2xl shadow-2xl',
+          'border border-foam',
           sizeClasses[size],
         ].join(' ')}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between px-6 py-5 border-b border-slate-100">
-          <h2 className="text-base font-semibold text-slate-900">{title}</h2>
+        <div className="flex items-center justify-between px-6 py-5 border-b border-foam">
+          <h2 className="text-base font-semibold text-roast">{title}</h2>
           {!hideCloseButton && (
             <button
               type="button"
               onClick={onClose}
-              className="w-9 h-9 flex items-center justify-center rounded-xl text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors min-w-[44px] min-h-[44px]"
+              className="w-9 h-9 flex items-center justify-center rounded-xl text-cocoa hover:text-mocha hover:bg-vanilla transition-colors min-w-[44px] min-h-[44px]"
             >
               <FaTimes />
             </button>

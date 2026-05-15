@@ -42,18 +42,18 @@ export function ResponsesView({ form, onBack }: ResponsesViewProps) {
         <button
           type="button"
           onClick={onBack}
-          className="w-9 h-9 flex items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-100 transition-colors shrink-0"
+          className="w-9 h-9 flex items-center justify-center rounded-xl border border-foam text-cocoa hover:bg-vanilla transition-colors shrink-0"
         >
           <FaArrowLeft className="text-sm" />
         </button>
         <div className="flex-1 min-w-0">
-          <h2 className="text-lg font-semibold text-slate-900 truncate">{form.title}</h2>
-          <p className="text-sm text-slate-500">Responses</p>
+          <h2 className="text-lg font-semibold text-roast truncate">{form.title}</h2>
+          <p className="text-sm text-cocoa">Responses</p>
         </div>
         {data && data.length > 0 && versionData && (
           <a
             href={`/api/forms/${form.id}/export?versionId=${data[activeVersion].version.id}`}
-            className="flex items-center gap-2 px-3 py-2 sm:px-4 rounded-xl bg-emerald-600 text-white text-sm font-medium hover:bg-emerald-700 active:bg-emerald-800 transition-colors min-h-[44px] shrink-0"
+            className="flex items-center gap-2 px-3 py-2 sm:px-4 rounded-xl bg-gold-dark text-white text-sm font-medium hover:bg-gold transition-colors min-h-[44px] shrink-0"
             title={`Export Version ${data[activeVersion].version.versionNumber} to Excel`}
           >
             <FaFileExcel className="text-base shrink-0" />
@@ -64,7 +64,7 @@ export function ResponsesView({ form, onBack }: ResponsesViewProps) {
 
       {isPending && (
         <div className="flex justify-center py-12">
-          <div className="w-6 h-6 rounded-full border-2 border-slate-200 border-t-slate-700 animate-spin" />
+          <div className="w-6 h-6 rounded-full border-2 border-foam border-t-espresso animate-spin" />
         </div>
       )}
 
@@ -88,15 +88,15 @@ export function ResponsesView({ form, onBack }: ResponsesViewProps) {
                   className={[
                     'px-4 py-2 rounded-full text-sm font-medium transition-colors duration-150',
                     idx === activeVersion
-                      ? 'bg-slate-900 text-white'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200',
+                      ? 'bg-espresso text-white'
+                      : 'bg-vanilla text-cocoa hover:bg-foam',
                   ].join(' ')}
                 >
                   Version {vd.version.versionNumber}
                   <span
                     className={[
                       'ml-2 text-xs px-1.5 py-0.5 rounded-full',
-                      idx === activeVersion ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-500',
+                      idx === activeVersion ? 'bg-white/20 text-white' : 'bg-foam text-cocoa',
                     ].join(' ')}
                   >
                     {vd.responses.length}
@@ -112,7 +112,7 @@ export function ResponsesView({ form, onBack }: ResponsesViewProps) {
                 <EmptyState message="No responses for this version yet." />
               ) : (
                 <div className="flex flex-col gap-3">
-                  <p className="text-sm text-slate-500">
+                  <p className="text-sm text-cocoa">
                     {versionData.responses.length} response
                     {versionData.responses.length !== 1 ? 's' : ''}
                   </p>
@@ -124,7 +124,7 @@ export function ResponsesView({ form, onBack }: ResponsesViewProps) {
                     return (
                       <div
                         key={resp.id}
-                        className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden"
+                        className="bg-cream rounded-2xl border border-foam shadow-sm overflow-hidden"
                       >
                         {/* Row header */}
                         <div
@@ -132,18 +132,18 @@ export function ResponsesView({ form, onBack }: ResponsesViewProps) {
                           tabIndex={0}
                           onClick={() => setExpandedId(isExpanded ? null : resp.id)}
                           onKeyDown={(e) => e.key === 'Enter' && setExpandedId(isExpanded ? null : resp.id)}
-                          className="w-full flex items-center gap-3 px-5 py-4 text-left hover:bg-slate-50 transition-colors min-h-[60px] cursor-pointer"
+                          className="w-full flex items-center gap-3 px-5 py-4 text-left hover:bg-vanilla transition-colors min-h-[60px] cursor-pointer"
                         >
-                          <div className="w-9 h-9 rounded-full bg-slate-900 text-white flex items-center justify-center text-sm font-semibold shrink-0">
+                          <div className="w-9 h-9 rounded-full bg-espresso text-white flex items-center justify-center text-sm font-semibold shrink-0">
                             {initial}
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className="text-sm font-medium text-slate-800 truncate">
+                            <p className="text-sm font-medium text-roast truncate">
                               {resp.employeeName}
                             </p>
-                            <p className="text-xs text-slate-500 truncate">{resp.employeeEmail}</p>
+                            <p className="text-xs text-cocoa truncate">{resp.employeeEmail}</p>
                           </div>
-                          <p className="text-xs text-slate-400 shrink-0">
+                          <p className="text-xs text-cocoa shrink-0">
                             {new Date(resp.submittedAt).toLocaleDateString('en-US', {
                               month: 'short',
                               day: 'numeric',
@@ -159,7 +159,7 @@ export function ResponsesView({ form, onBack }: ResponsesViewProps) {
                                 employeeName: resp.employeeName,
                               })
                             }}
-                            className="w-8 h-8 flex items-center justify-center rounded-full border border-slate-200 text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors shrink-0"
+                            className="w-8 h-8 flex items-center justify-center rounded-full border border-foam text-cocoa hover:text-mocha hover:bg-vanilla transition-colors shrink-0"
                             title="View location"
                           >
                             <FaMapMarkerAlt className="text-xs" />
@@ -170,21 +170,21 @@ export function ResponsesView({ form, onBack }: ResponsesViewProps) {
                               e.stopPropagation()
                               setEditingResponse(resp)
                             }}
-                            className="w-8 h-8 flex items-center justify-center rounded-full border border-slate-200 text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors shrink-0"
+                            className="w-8 h-8 flex items-center justify-center rounded-full border border-foam text-cocoa hover:text-mocha hover:bg-vanilla transition-colors shrink-0"
                             title="Edit response"
                           >
                             <FaPencilAlt className="text-xs" />
                           </button>
                           {isExpanded ? (
-                            <FaChevronUp className="text-slate-400 text-xs shrink-0" />
+                            <FaChevronUp className="text-cocoa text-xs shrink-0" />
                           ) : (
-                            <FaChevronDown className="text-slate-400 text-xs shrink-0" />
+                            <FaChevronDown className="text-cocoa text-xs shrink-0" />
                           )}
                         </div>
 
                         {/* Expanded answers */}
                         {isExpanded && (
-                          <div className="border-t border-slate-100 px-5 py-4 flex flex-col gap-4">
+                          <div className="border-t border-foam px-5 py-4 flex flex-col gap-4">
                             {inputFields.map((field) => {
                               const answer = resp.answers[field.id]
                               const displayAnswer = Array.isArray(answer)
@@ -192,11 +192,11 @@ export function ResponsesView({ form, onBack }: ResponsesViewProps) {
                                 : (answer ?? '—')
                               return (
                                 <div key={field.id} className="flex flex-col gap-1">
-                                  <p className="text-xs font-medium text-slate-500">
+                                  <p className="text-xs font-medium text-cocoa">
                                     {field.label ?? FIELD_TYPE_LABELS[field.type]}
                                   </p>
-                                  <p className="text-sm text-slate-900">
-                                    {displayAnswer || <span className="text-slate-400 italic">No answer</span>}
+                                  <p className="text-sm text-roast">
+                                    {displayAnswer || <span className="text-cocoa italic">No answer</span>}
                                   </p>
                                 </div>
                               )
@@ -229,7 +229,7 @@ export function ResponsesView({ form, onBack }: ResponsesViewProps) {
           <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
 
           <div
-            className="relative w-full sm:max-w-lg bg-white sm:rounded-2xl rounded-t-2xl overflow-hidden shadow-2xl flex flex-col"
+            className="relative w-full sm:max-w-lg bg-cream sm:rounded-2xl rounded-t-2xl overflow-hidden shadow-2xl flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
@@ -238,10 +238,10 @@ export function ResponsesView({ form, onBack }: ResponsesViewProps) {
                 <FaMapMarkerAlt className="text-red-500" />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-slate-900 truncate">
+                <p className="text-sm font-semibold text-roast truncate">
                   {locationModal.employeeName}
                 </p>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-cocoa">
                   {locationModal.latitude.toFixed(5)}, {locationModal.longitude.toFixed(5)}
                 </p>
               </div>
@@ -260,16 +260,16 @@ export function ResponsesView({ form, onBack }: ResponsesViewProps) {
                 title="Submission location"
               />
             ) : (
-              <div className="flex flex-col items-center justify-center h-[320px] bg-slate-50 gap-2">
-                <FaMapMarkerAlt className="text-3xl text-slate-300" />
-                <p className="text-sm text-slate-400 text-center px-6">
-                  Set <code className="text-xs bg-slate-100 px-1 py-0.5 rounded">NEXT_PUBLIC_GOOGLE_MAPS_KEY</code> to show the map.
+              <div className="flex flex-col items-center justify-center h-[320px] bg-vanilla gap-2">
+                <FaMapMarkerAlt className="text-3xl text-foam" />
+                <p className="text-sm text-cocoa text-center px-6">
+                  Set <code className="text-xs bg-foam px-1 py-0.5 rounded">NEXT_PUBLIC_GOOGLE_MAPS_KEY</code> to show the map.
                 </p>
                 <a
                   href={`https://www.google.com/maps?q=${locationModal.latitude},${locationModal.longitude}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-slate-500 underline"
+                  className="text-xs text-cocoa underline"
                 >
                   Open in Google Maps
                 </a>
@@ -277,11 +277,11 @@ export function ResponsesView({ form, onBack }: ResponsesViewProps) {
             )}
 
             {/* Close button */}
-            <div className="px-4 py-4 bg-white">
+            <div className="px-4 py-4 bg-cream">
               <button
                 type="button"
                 onClick={() => setLocationModal(null)}
-                className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-900 text-white text-sm font-medium hover:bg-slate-700 min-h-[44px] transition-colors"
+                className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-espresso text-white text-sm font-medium hover:bg-mocha min-h-[44px] transition-colors"
               >
                 <FaTimes className="text-xs" />
                 Close
@@ -297,8 +297,8 @@ export function ResponsesView({ form, onBack }: ResponsesViewProps) {
 function EmptyState({ message }: { message: string }) {
   return (
     <div className="flex flex-col items-center justify-center py-16 gap-3">
-      <FaClipboardList className="text-4xl text-slate-200" />
-      <p className="text-sm text-slate-400">{message}</p>
+      <FaClipboardList className="text-4xl text-foam" />
+      <p className="text-sm text-cocoa">{message}</p>
     </div>
   )
 }

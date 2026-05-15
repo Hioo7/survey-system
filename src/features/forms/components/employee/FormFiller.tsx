@@ -70,7 +70,7 @@ export function FormFiller({ assignedForm, onBack }: FormFillerProps) {
 
   if (state.success) {
     return createPortal(
-      <div className="fixed inset-0 z-40 bg-slate-50 overflow-y-auto">
+      <div className="fixed inset-0 z-40 bg-vanilla overflow-y-auto">
         <SubmissionConfirmation formTitle={assignedForm.formTitle} onBack={onBack} />
       </div>,
       document.body,
@@ -80,20 +80,20 @@ export function FormFiller({ assignedForm, onBack }: FormFillerProps) {
   if (assignedForm.hasSubmitted) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-5 text-center px-4">
-        <div className="w-16 h-16 rounded-2xl bg-green-50 flex items-center justify-center">
-          <span className="text-2xl text-green-500">✓</span>
+        <div className="w-16 h-16 rounded-2xl bg-gold-light flex items-center justify-center">
+          <span className="text-2xl text-gold-dark">✓</span>
         </div>
         <div>
-          <h2 className="text-lg font-semibold text-slate-900">Already Submitted</h2>
-          <p className="text-sm text-slate-500 mt-1">{assignedForm.formTitle}</p>
-          <p className="text-sm text-slate-400 mt-2">
+          <h2 className="text-lg font-semibold text-roast">Already Submitted</h2>
+          <p className="text-sm text-cocoa mt-1">{assignedForm.formTitle}</p>
+          <p className="text-sm text-cocoa mt-2">
             You have already submitted this version of the form.
           </p>
         </div>
         <button
           type="button"
           onClick={onBack}
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-700 hover:bg-slate-50 min-h-[44px]"
+          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-foam text-sm font-medium text-mocha hover:bg-vanilla min-h-[44px]"
         >
           <FaChevronLeft className="text-xs" />
           Back to Forms
@@ -105,30 +105,30 @@ export function FormFiller({ assignedForm, onBack }: FormFillerProps) {
   if (!mounted) return null
 
   return createPortal(
-    <div className="fixed inset-0 z-40 bg-slate-50 flex flex-col">
+    <div className="fixed inset-0 z-40 bg-vanilla flex flex-col">
       {/* Top bar */}
-      <div className="shrink-0 bg-white border-b border-slate-100 px-4 sm:px-6 py-3 flex items-center gap-3">
+      <div className="shrink-0 bg-cream border-b border-foam px-4 sm:px-6 py-3 flex items-center gap-3">
         <button
           type="button"
           onClick={onBack}
-          className="w-9 h-9 flex items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-100 shrink-0"
+          className="w-9 h-9 flex items-center justify-center rounded-xl border border-foam text-cocoa hover:bg-vanilla shrink-0"
         >
           <FaChevronLeft className="text-sm" />
         </button>
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-semibold text-slate-900 truncate">
+          <p className="text-sm font-semibold text-roast truncate">
             {assignedForm.formTitle}
           </p>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-cocoa">
             Page {currentPage + 1} of {totalPages}
           </p>
         </div>
       </div>
 
       {/* Progress bar */}
-      <div className="h-1 bg-slate-100">
+      <div className="h-1 bg-foam">
         <div
-          className="h-full bg-slate-900 transition-all duration-300"
+          className="h-full bg-espresso transition-all duration-300"
           style={{ width: `${progress}%` }}
         />
       </div>
@@ -191,7 +191,7 @@ export function FormFiller({ assignedForm, onBack }: FormFillerProps) {
         className="flex flex-col"
       >
         <div className="px-4 sm:px-6 py-6 flex flex-col gap-4">
-          <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
+          <div className="bg-cream rounded-2xl border border-foam shadow-sm p-5">
             <FormPage
               fields={currentFields}
               answers={answers}
@@ -212,7 +212,7 @@ export function FormFiller({ assignedForm, onBack }: FormFillerProps) {
               <button
                 type="button"
                 onClick={() => setCurrentPage((p) => p - 1)}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-700 hover:bg-slate-50 min-h-[44px]"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-foam text-sm font-medium text-mocha hover:bg-vanilla min-h-[44px]"
               >
                 <FaArrowLeft className="text-xs" />
                 Previous
@@ -224,7 +224,7 @@ export function FormFiller({ assignedForm, onBack }: FormFillerProps) {
                 key="next"
                 type="button"
                 onClick={() => setCurrentPage((p) => p + 1)}
-                className="ml-auto inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 text-white text-sm font-medium hover:bg-slate-700 min-h-[44px] transition-colors"
+                className="ml-auto inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-espresso text-white text-sm font-medium hover:bg-mocha min-h-[44px] transition-colors"
               >
                 Next
                 <FaArrowRight className="text-xs" />
@@ -234,7 +234,7 @@ export function FormFiller({ assignedForm, onBack }: FormFillerProps) {
                 key="submit"
                 type="submit"
                 disabled={gettingLocation || isPending}
-                className="ml-auto inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 text-white text-sm font-medium hover:bg-slate-700 disabled:opacity-50 min-h-[44px] transition-colors"
+                className="ml-auto inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-espresso text-white text-sm font-medium hover:bg-mocha disabled:opacity-50 min-h-[44px] transition-colors"
               >
                 {gettingLocation ? (
                   <>

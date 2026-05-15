@@ -20,7 +20,7 @@ function SubmitButton() {
       disabled={pending}
       className={[
         'w-full flex items-center justify-center gap-2.5',
-        'bg-slate-900 hover:bg-slate-700 active:bg-slate-600',
+        'bg-espresso hover:bg-mocha active:bg-caramel-burnt',
         'disabled:opacity-60 disabled:cursor-not-allowed',
         'text-white font-semibold rounded-xl py-3 min-h-[52px]',
         'transition-colors duration-150 shadow-sm',

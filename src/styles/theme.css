@@ -1,0 +1,30 @@
+/* ─────────────────────────────────────────────────────────────
+   src/styles/theme.css
+   Coffee brand palette — single source of truth for all tokens.
+   Tailwind v4 @theme block generates all utility classes:
+   bg-espresso, text-mocha, border-foam, ring-caramel, etc.
+   ───────────────────────────────────────────────────────────── */
+
+@theme {
+  /* Primary surfaces */
+  --color-espresso:      #3B2416;   /* primary dark — nav, primary buttons */
+  --color-mocha:         #6F4A2D;   /* secondary — hover, medium weight    */
+  --color-caramel:       #C89B6D;   /* accent — focus rings, active border */
+  --color-caramel-burnt: #8B5E3C;   /* button hover state                  */
+
+  /* Backgrounds */
+  --color-vanilla:       #F5EDE3;   /* page / section background           */
+  --color-cream:         #FFF8F1;   /* card / modal / input background     */
+
+  /* Text */
+  --color-roast:         #2A1A12;   /* primary text                        */
+  --color-cocoa:         #7A6253;   /* muted / secondary text              */
+
+  /* Borders & subtle UI */
+  --color-foam:          #E7D8C9;   /* borders, dividers, subtle lines     */
+
+  /* Success / highlight (replaces green-*) */
+  --color-gold:          #D4A25A;   /* success highlight                   */
+  --color-gold-light:    #FBF3E4;   /* success background                  */
+  --color-gold-dark:     #A87830;   /* success text / icon                 */
+}

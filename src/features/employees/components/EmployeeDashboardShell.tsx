@@ -35,7 +35,7 @@ export function EmployeeDashboardShell({
   const [activeSection, setActiveSection] = useState<Section>('forms')
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-vanilla flex flex-col">
       <main className="flex-1 overflow-y-auto pb-24">
         <div className="max-w-3xl mx-auto px-4 py-6 sm:px-6">
           {activeSection === 'forms' && (
@@ -53,7 +53,7 @@ export function EmployeeDashboardShell({
         </div>
       </main>
 
-      <nav className="fixed bottom-0 inset-x-0 bg-white border-t border-slate-100 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
+      <nav className="fixed bottom-0 inset-x-0 bg-cream border-t border-foam shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
         <div className="flex max-w-3xl mx-auto">
           {NAV_ITEMS.map((item) => {
             const isActive = activeSection === item.id
@@ -65,15 +65,15 @@ export function EmployeeDashboardShell({
                 className={[
                   'flex-1 flex flex-col items-center justify-center gap-1',
                   'py-3 min-h-[60px] transition-colors duration-150 relative',
-                  isActive ? 'text-slate-900' : 'text-slate-400 hover:text-slate-600',
+                  isActive ? 'text-roast' : 'text-cocoa hover:text-mocha',
                 ].join(' ')}
               >
                 {isActive && (
-                  <span className="absolute top-0 left-1/2 -translate-x-1/2 w-10 h-0.5 bg-slate-900 rounded-full" />
+                  <span className="absolute top-0 left-1/2 -translate-x-1/2 w-10 h-0.5 bg-espresso rounded-full" />
                 )}
                 {item.icon}
                 <span
-                  className={['text-xs font-medium', isActive ? 'text-slate-900' : ''].join(' ')}
+                  className={['text-xs font-medium', isActive ? 'text-roast' : ''].join(' ')}
                 >
                   {item.label}
                 </span>

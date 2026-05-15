@@ -15,15 +15,15 @@ export function StaffLoginPage() {
   const [activeTab, setActiveTab] = useState('super-admin')
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100/60 flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-vanilla via-cream to-foam/30 flex items-center justify-center p-4 relative overflow-hidden">
       {/* Decorative blobs */}
       <div
         aria-hidden
-        className="absolute -top-32 -right-32 w-96 h-96 bg-slate-200/50 rounded-full blur-3xl pointer-events-none"
+        className="absolute -top-32 -right-32 w-96 h-96 bg-foam/50 rounded-full blur-3xl pointer-events-none"
       />
       <div
         aria-hidden
-        className="absolute -bottom-32 -left-32 w-96 h-96 bg-slate-100/60 rounded-full blur-3xl pointer-events-none"
+        className="absolute -bottom-32 -left-32 w-96 h-96 bg-vanilla/60 rounded-full blur-3xl pointer-events-none"
       />
       {/* Subtle dot grid */}
       <div
@@ -31,7 +31,7 @@ export function StaffLoginPage() {
         className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage:
-            'radial-gradient(circle, #cbd5e1 1px, transparent 1px)',
+            'radial-gradient(circle, #C89B6D 1px, transparent 1px)',
           backgroundSize: '28px 28px',
           opacity: 0.35,
         }}
@@ -40,15 +40,15 @@ export function StaffLoginPage() {
       <div className="relative w-full max-w-md">
         {/* Branding */}
         <div className="flex flex-col items-center mb-8">
-          <div className="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center shadow-lg shadow-slate-900/20 mb-4">
+          <div className="w-16 h-16 bg-espresso rounded-2xl flex items-center justify-center shadow-lg shadow-espresso/20 mb-4">
             <FaClipboardList className="text-white text-2xl" />
           </div>
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Staff Portal</h1>
-          <p className="text-slate-500 text-sm mt-1">Sign in to manage your team</p>
+          <h1 className="text-2xl font-bold text-roast tracking-tight">Staff Portal</h1>
+          <p className="text-cocoa text-sm mt-1">Sign in to manage your team</p>
         </div>
 
         {/* Card */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl shadow-slate-200/80 border border-slate-100 p-6 flex flex-col gap-6">
+        <div className="bg-cream/90 backdrop-blur-sm rounded-2xl shadow-xl shadow-foam/80 border border-foam p-6 flex flex-col gap-6">
           <Tabs tabs={LOGIN_TABS} activeTab={activeTab} onTabChange={setActiveTab} />
 
           {activeTab === 'super-admin' ? (
@@ -58,7 +58,7 @@ export function StaffLoginPage() {
           )}
         </div>
 
-        <p className="text-center text-xs text-slate-400 mt-6">
+        <p className="text-center text-xs text-cocoa mt-6">
           Staff access only · Unauthorized access is prohibited
         </p>
       </div>

@@ -11,14 +11,14 @@ type SubmissionConfirmationProps = {
 export function SubmissionConfirmation({ formTitle, onBack }: SubmissionConfirmationProps) {
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] gap-5 text-center px-4">
-      <div className="w-20 h-20 rounded-full bg-green-50 flex items-center justify-center">
-        <FaCheckCircle className="text-4xl text-green-500" />
+      <div className="w-20 h-20 rounded-full bg-gold-light flex items-center justify-center">
+        <FaCheckCircle className="text-4xl text-gold-dark" />
       </div>
       <div>
-        <h2 className="text-xl font-semibold text-slate-900">Form Submitted!</h2>
-        <p className="text-sm text-slate-500 mt-1">{formTitle}</p>
+        <h2 className="text-xl font-semibold text-roast">Form Submitted!</h2>
+        <p className="text-sm text-cocoa mt-1">{formTitle}</p>
       </div>
-      <p className="text-sm text-slate-400 max-w-xs">
+      <p className="text-sm text-cocoa max-w-xs">
         Your response has been recorded. Thank you for completing this form.
       </p>
       <Button type="button" variant="secondary" onClick={onBack}>

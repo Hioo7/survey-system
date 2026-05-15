@@ -16,7 +16,7 @@ type TabsProps = {
 
 export function Tabs({ tabs, activeTab, onTabChange }: TabsProps) {
   return (
-    <div className="flex bg-slate-100 p-1 rounded-xl gap-1">
+    <div className="flex bg-foam p-1 rounded-xl gap-1">
       {tabs.map((tab) => (
         <button
           key={tab.id}
@@ -26,8 +26,8 @@ export function Tabs({ tabs, activeTab, onTabChange }: TabsProps) {
             'flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg',
             'text-sm font-medium transition-all duration-200 min-h-[44px]',
             activeTab === tab.id
-              ? 'bg-white text-slate-900 shadow-sm'
-              : 'text-slate-500 hover:text-slate-700',
+              ? 'bg-cream text-roast shadow-sm'
+              : 'text-cocoa hover:text-mocha hover:bg-vanilla',
           ].join(' ')}
         >
           <span className="shrink-0 text-base">{tab.icon}</span>
