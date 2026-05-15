@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'Build surveys, manage your team, and collect responses.',
     start_url: '/',
     display: 'standalone',
-    background_color: '#1e293b',
-    theme_color: '#1e293b',
+    background_color: '#3B2416',
+    theme_color: '#3B2416',
     orientation: 'portrait',
     icons: [
       { src: '/icon', sizes: '512x512', type: 'image/png', purpose: 'any' },

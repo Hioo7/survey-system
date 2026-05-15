@@ -1,7 +1,8 @@
 'use client'
 
 import { ReactNode, useState } from 'react'
-import { FaUsers, FaUserCircle, FaClipboardList, FaInbox } from 'react-icons/fa'
+import { FaUsers, FaUserCircle, FaInbox } from 'react-icons/fa'
+import { BrandMark } from '@/components/branding/BrandMark'
 import { UsersSection } from '@/features/employees/components/UsersSection'
 import { ProfileSection } from './ProfileSection'
 import { FormsSection } from '@/features/forms/components/admin/FormsSection'
@@ -26,7 +27,19 @@ type Section = 'users' | 'forms' | 'requests' | 'profile'
 
 const NAV_ITEMS: { id: Section; label: string; icon: ReactNode }[] = [
   { id: 'users', label: 'Users', icon: <FaUsers className="text-[22px]" /> },
-  { id: 'forms', label: 'Forms', icon: <FaClipboardList className="text-[22px]" /> },
+  {
+    id: 'forms',
+    label: 'Forms',
+    icon: (
+      <BrandMark
+        className="h-[22px] w-[22px]"
+        cupClassName="text-current"
+        steamClassName="text-caramel"
+        detailClassName="text-cream"
+        title=""
+      />
+    ),
+  },
   { id: 'requests', label: 'Requests', icon: <FaInbox className="text-[22px]" /> },
   { id: 'profile', label: 'Profile', icon: <FaUserCircle className="text-[22px]" /> },
 ]

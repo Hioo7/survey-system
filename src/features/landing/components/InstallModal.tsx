@@ -1,8 +1,8 @@
 'use client'
 
 import { Modal } from '@/components/ui/Modal'
+import { BrandMark } from '@/components/branding/BrandMark'
 import {
-  FaClipboardList,
   FaBolt,
   FaWifi,
   FaMobileAlt,
@@ -46,8 +46,13 @@ export function InstallModal({
       <div className="flex flex-col gap-6">
         {/* App identity */}
         <div className="flex items-center gap-4">
-          <div className="w-16 h-16 bg-espresso rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-espresso/20">
-            <FaClipboardList className="text-white text-2xl" />
+          <div className="w-16 h-16 bg-espresso rounded-[1.5rem] flex items-center justify-center shrink-0 shadow-lg shadow-espresso/20 ring-1 ring-caramel/30">
+            <BrandMark
+              className="h-9 w-9"
+              cupClassName="text-cream"
+              steamClassName="text-caramel"
+              detailClassName="text-espresso"
+            />
           </div>
           <div className="flex flex-col gap-0.5">
             <span className="text-base font-semibold text-roast">Staff Portal</span>

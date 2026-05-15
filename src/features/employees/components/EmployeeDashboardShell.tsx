@@ -1,7 +1,8 @@
 'use client'
 
 import { ReactNode, useState } from 'react'
-import { FaClipboardList, FaUserCircle, FaInbox } from 'react-icons/fa'
+import { FaUserCircle, FaInbox } from 'react-icons/fa'
+import { BrandMark } from '@/components/branding/BrandMark'
 import { EmployeeFormsSection } from '@/features/forms/components/employee/EmployeeFormsSection'
 import { EmployeeProfileSection } from './EmployeeProfileSection'
 import { EmployeeEditRequestsSection } from '@/features/edit-requests/components/employee/EmployeeEditRequestsSection'
@@ -20,7 +21,19 @@ type EmployeeDashboardShellProps = {
 type Section = 'forms' | 'requests' | 'profile'
 
 const NAV_ITEMS: { id: Section; label: string; icon: ReactNode }[] = [
-  { id: 'forms', label: 'Forms', icon: <FaClipboardList className="text-[22px]" /> },
+  {
+    id: 'forms',
+    label: 'Forms',
+    icon: (
+      <BrandMark
+        className="h-[22px] w-[22px]"
+        cupClassName="text-current"
+        steamClassName="text-caramel"
+        detailClassName="text-cream"
+        title=""
+      />
+    ),
+  },
   { id: 'requests', label: 'Requests', icon: <FaInbox className="text-[22px]" /> },
   { id: 'profile', label: 'Profile', icon: <FaUserCircle className="text-[22px]" /> },
 ]

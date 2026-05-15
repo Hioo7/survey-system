@@ -8,6 +8,7 @@ import {
   FaIdBadge,
   FaSignOutAlt,
 } from 'react-icons/fa'
+import { AvatarBadge } from '@/components/branding/AvatarBadge'
 import { EmployeeLogoutConfirmModal } from './EmployeeLogoutConfirmModal'
 
 type EmployeeProfileSectionProps = {
@@ -15,35 +16,8 @@ type EmployeeProfileSectionProps = {
   sessionValidUntil: string
 }
 
-const PALETTE = [
-  { bg: 'bg-espresso' },
-  { bg: 'bg-mocha' },
-  { bg: 'bg-caramel-burnt' },
-  { bg: 'bg-mocha' },
-  { bg: 'bg-espresso' },
-  { bg: 'bg-caramel-burnt' },
-  { bg: 'bg-mocha' },
-  { bg: 'bg-espresso' },
-]
-
-function getPaletteBg(name: string) {
-  let hash = 0
-  for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash)
-  return PALETTE[Math.abs(hash) % PALETTE.length].bg
-}
-
-function getInitials(name: string) {
-  return name
-    .split(' ')
-    .map((n) => n[0])
-    .join('')
-    .toUpperCase()
-    .slice(0, 2)
-}
-
 export function EmployeeProfileSection({ employee, sessionValidUntil }: EmployeeProfileSectionProps) {
   const [logoutOpen, setLogoutOpen] = useState(false)
-  const bg = getPaletteBg(employee.name)
 
   const joinedDate = new Date(employee.createdAt).toLocaleDateString('en-US', {
     month: 'long',
@@ -66,15 +40,7 @@ export function EmployeeProfileSection({ employee, sessionValidUntil }: Employee
 
         {/* Identity card */}
         <div className="bg-cream rounded-2xl border border-foam shadow-sm p-5 flex items-center gap-4">
-          <div
-            className={[
-              bg,
-              'w-16 h-16 rounded-2xl flex items-center justify-center',
-              'text-white font-bold text-xl select-none shrink-0 shadow-sm',
-            ].join(' ')}
-          >
-            {getInitials(employee.name)}
-          </div>
+          <AvatarBadge label={employee.name} />
           <div className="flex-1 min-w-0">
             <p className="font-bold text-roast text-lg leading-tight truncate">
               {employee.name}

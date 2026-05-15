@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { FaClipboardList, FaShieldAlt, FaUsers } from 'react-icons/fa'
+import { FaShieldAlt, FaUsers } from 'react-icons/fa'
+import { BrandMark } from '@/components/branding/BrandMark'
 import { Tabs } from '@/components/ui/Tabs'
 import { SuperAdminLoginForm } from './SuperAdminLoginForm'
 import { EmployeeLoginForm } from './EmployeeLoginForm'
@@ -40,8 +41,13 @@ export function StaffLoginPage() {
       <div className="relative w-full max-w-md">
         {/* Branding */}
         <div className="flex flex-col items-center mb-8">
-          <div className="w-16 h-16 bg-espresso rounded-2xl flex items-center justify-center shadow-lg shadow-espresso/20 mb-4">
-            <FaClipboardList className="text-white text-2xl" />
+          <div className="w-16 h-16 bg-espresso rounded-[1.5rem] flex items-center justify-center shadow-lg shadow-espresso/20 ring-1 ring-caramel/30 mb-4">
+            <BrandMark
+              className="h-9 w-9"
+              cupClassName="text-cream"
+              steamClassName="text-caramel"
+              detailClassName="text-espresso"
+            />
           </div>
           <h1 className="text-2xl font-bold text-roast tracking-tight">Staff Portal</h1>
           <p className="text-cocoa text-sm mt-1">Sign in to manage your team</p>

@@ -10,6 +10,7 @@ import {
   FaSpinner,
   FaExclamationTriangle,
 } from 'react-icons/fa'
+import { AvatarBadge, getAvatarTone } from '@/components/branding/AvatarBadge'
 import { deleteEmployeeAction } from '@/features/employees/actions/employee.action'
 
 type EmployeeDTO = { id: string; name: string; email: string; createdAt: string }
@@ -19,32 +20,23 @@ type EmployeeCardProps = {
   onEdit: (employee: EmployeeDTO) => void
 }
 
-const PALETTE = [
-  { bg: 'bg-espresso',      color: '#3B2416' },
-  { bg: 'bg-mocha',         color: '#6F4A2D' },
-  { bg: 'bg-caramel-burnt', color: '#8B5E3C' },
-  { bg: 'bg-mocha',         color: '#6F4A2D' },
-  { bg: 'bg-espresso',      color: '#3B2416' },
-  { bg: 'bg-caramel-burnt', color: '#8B5E3C' },
-  { bg: 'bg-mocha',         color: '#6F4A2D' },
-  { bg: 'bg-espresso',      color: '#3B2416' },
-]
-
-function getPalette(name: string) {
-  let hash = 0
-  for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash)
-  return PALETTE[Math.abs(hash) % PALETTE.length]
-}
-
-function getInitials(name: string) {
-  return name.split(' ').map((n) => n[0]).join('').toUpperCase().slice(0, 2)
+function getBorderColor(toneClassName: string) {
+  switch (toneClassName) {
+    case 'bg-mocha':
+      return '#6F4A2D'
+    case 'bg-caramel-burnt':
+      return '#8B5E3C'
+    default:
+      return '#3B2416'
+  }
 }
 
 export function EmployeeCard({ employee, onEdit }: EmployeeCardProps) {
   const [confirmDelete, setConfirmDelete] = useState(false)
   const [isPending, startTransition] = useTransition()
   const router = useRouter()
-  const { bg, color } = getPalette(employee.name)
+  const toneClassName = getAvatarTone(employee.name)
+  const color = getBorderColor(toneClassName)
 
   const handleDelete = () => {
     startTransition(async () => {
@@ -66,15 +58,7 @@ export function EmployeeCard({ employee, onEdit }: EmployeeCardProps) {
     >
       {/* Info row — avatar gets no right-side competition, info column fills freely */}
       <div className="flex items-center gap-3.5 px-4 py-4">
-        <div
-          className={[
-            bg,
-            'w-11 h-11 rounded-xl flex items-center justify-center',
-            'text-white font-bold text-sm select-none shrink-0 shadow-sm',
-          ].join(' ')}
-        >
-          {getInitials(employee.name)}
-        </div>
+        <AvatarBadge label={employee.name} className="h-11 w-11 rounded-xl text-sm" />
 
         <div className="flex-1 min-w-0">
           <p className="font-bold text-roast text-sm leading-tight truncate">

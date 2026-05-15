@@ -3,23 +3,20 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import {
-  FaUserCircle,
   FaEnvelope,
   FaLock,
   FaSignOutAlt,
   FaEdit,
 } from 'react-icons/fa'
 import { Button } from '@/components/ui/Button'
+import { AvatarBadge } from '@/components/branding/AvatarBadge'
+import { BrandMark } from '@/components/branding/BrandMark'
 import { LogoutConfirmModal } from './LogoutConfirmModal'
 import { UpdateEmailModal } from './UpdateEmailModal'
 import { ChangePasswordModal } from './ChangePasswordModal'
 
 type ProfileSectionProps = {
   superUserEmail: string
-}
-
-function getInitials(email: string): string {
-  return email.split('@')[0].slice(0, 2).toUpperCase()
 }
 
 export function ProfileSection({ superUserEmail }: ProfileSectionProps) {
@@ -37,12 +34,16 @@ export function ProfileSection({ superUserEmail }: ProfileSectionProps) {
 
       {/* Identity card */}
       <div className="bg-cream rounded-2xl border border-foam p-5 shadow-sm flex items-center gap-4">
-        <div className="w-16 h-16 bg-espresso rounded-2xl flex items-center justify-center text-white text-xl font-bold shrink-0 select-none">
-          {getInitials(superUserEmail)}
-        </div>
+        <AvatarBadge label={superUserEmail} />
         <div className="flex flex-col gap-1 min-w-0">
           <div className="flex items-center gap-1.5 text-xs text-cocoa font-semibold uppercase tracking-wider">
-            <FaUserCircle className="shrink-0" />
+            <BrandMark
+              className="h-4 w-4"
+              cupClassName="text-mocha"
+              steamClassName="text-caramel"
+              detailClassName="text-cream"
+              title=""
+            />
             <span>Super Admin</span>
           </div>
           <div className="flex items-center gap-2 min-w-0">

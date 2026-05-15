@@ -17,6 +17,7 @@ import {
   FaMapMarkerAlt,
   FaFileExcel,
 } from 'react-icons/fa'
+import { BrandMark } from '@/components/branding/BrandMark'
 import { usePWAInstall } from '@/hooks/usePWAInstall'
 import { InstallModal } from './InstallModal'
 
@@ -91,8 +92,13 @@ export function LandingPage() {
         {/* Content */}
         <div className="relative max-w-4xl mx-auto px-4 py-20 sm:py-28 lg:py-36 flex flex-col items-center text-center gap-8">
           {/* Logo mark */}
-          <div className="w-20 h-20 bg-cream rounded-2xl flex items-center justify-center shadow-2xl shadow-black/30">
-            <FaClipboardList className="text-espresso text-3xl" />
+          <div className="w-20 h-20 bg-cream rounded-[1.75rem] flex items-center justify-center shadow-2xl shadow-black/30 ring-1 ring-caramel/20">
+            <BrandMark
+              className="h-11 w-11"
+              cupClassName="text-espresso"
+              steamClassName="text-caramel"
+              detailClassName="text-cream"
+            />
           </div>
 
           {/* Eyebrow badge */}
@@ -195,7 +201,13 @@ export function LandingPage() {
           {/* Brand */}
           <div className="flex items-center gap-2.5">
             <div className="w-7 h-7 bg-cream/10 rounded-lg flex items-center justify-center">
-              <FaClipboardList className="text-cream text-xs" />
+              <BrandMark
+                className="h-4 w-4"
+                cupClassName="text-cream"
+                steamClassName="text-caramel"
+                detailClassName="text-espresso"
+                title=""
+              />
             </div>
             <span className="text-cream text-sm font-semibold">Staff Portal</span>
           </div>
