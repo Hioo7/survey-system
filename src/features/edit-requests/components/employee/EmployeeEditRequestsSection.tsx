@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
-import { FaInbox, FaPlus, FaTimes, FaExclamationCircle } from 'react-icons/fa'
+import { FaInbox, FaPlus, FaTimes, FaCircle, FaPencilAlt, FaCalendarAlt } from 'react-icons/fa'
 import { createEditRequestAction } from '@/features/edit-requests/actions/edit-request.action'
 import type { EditRequestDTO, SubmittedFormDTO } from '@/features/edit-requests/services/edit-request.service'
 import type { EditRequestActionResult } from '@/features/edit-requests/actions/edit-request.action'
@@ -26,7 +26,7 @@ export function EmployeeEditRequestsSection({ initialOpenRequests, submittedForm
   const [fieldState, setFieldState] = useState<EditRequestActionResult>({})
   const [isPending, startTransition] = useTransition()
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
     startTransition(async () => {
@@ -163,19 +163,35 @@ export function EmployeeEditRequestsSection({ initialOpenRequests, submittedForm
           {initialOpenRequests.map((req) => (
             <div
               key={req.id}
-              className="bg-white rounded-2xl border border-slate-100 shadow-sm px-5 py-4 flex flex-col gap-2"
+              className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden"
+              style={{ borderLeft: '3px solid #cbd5e1' }}
             >
-              <div className="flex items-start justify-between gap-3">
-                <p className="text-sm font-medium text-slate-800 truncate">{req.formTitle}</p>
-                <span className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-50 text-amber-600 text-xs font-medium shrink-0">
-                  <FaExclamationCircle className="text-[10px]" />
-                  Open
-                </span>
+              <div className="flex items-start gap-4 px-5 py-4">
+                {/* Icon */}
+                <div className="w-9 h-9 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0 mt-0.5">
+                  <FaPencilAlt className="text-slate-400 text-xs" />
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-start justify-between gap-2">
+                    <p className="text-sm font-semibold text-slate-800 leading-snug truncate">
+                      {req.formTitle}
+                    </p>
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-50 border border-amber-100 text-amber-600 text-[11px] font-medium shrink-0">
+                      <FaCircle className="text-[5px]" />
+                      Open
+                    </span>
+                  </div>
+                  <p className="text-sm text-slate-500 mt-1.5 leading-relaxed line-clamp-3">
+                    {req.description}
+                  </p>
+                  <div className="flex items-center gap-1.5 mt-2">
+                    <FaCalendarAlt className="text-slate-300 text-[10px]" />
+                    <p className="text-[11px] text-slate-400">Requested {formatDate(req.createdAt)}</p>
+                  </div>
+                </div>
               </div>
-              <p className="text-sm text-slate-600 leading-relaxed line-clamp-3">
-                {req.description}
-              </p>
-              <p className="text-xs text-slate-400">{formatDate(req.createdAt)}</p>
             </div>
           ))}
         </div>
