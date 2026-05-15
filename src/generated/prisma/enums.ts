@@ -32,3 +32,11 @@ export const FormStatus = {
 } as const
 
 export type FormStatus = (typeof FormStatus)[keyof typeof FormStatus]
+
+
+export const EditRequestStatus = {
+  OPEN: 'OPEN',
+  CLOSED: 'CLOSED'
+} as const
+
+export type EditRequestStatus = (typeof EditRequestStatus)[keyof typeof EditRequestStatus]

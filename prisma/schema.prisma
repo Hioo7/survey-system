@@ -26,6 +26,11 @@ enum FormStatus {
   PUBLISHED
 }
 
+enum EditRequestStatus {
+  OPEN
+  CLOSED
+}
+
 model SuperUser {
   id        String   @id @default(cuid())
   email     String   @unique
@@ -42,8 +47,9 @@ model Employee {
   updatedAt   DateTime          @updatedAt
   otps        EmployeeOTP[]
   sessions    EmployeeSession[]
-  assignments FormAssignment[]
-  responses   FormResponse[]
+  assignments  FormAssignment[]
+  responses    FormResponse[]
+  editRequests EditRequest[]
 }
 
 model EmployeeOTP {
@@ -71,9 +77,10 @@ model Form {
   status      FormStatus       @default(DRAFT)
   createdAt   DateTime         @default(now())
   updatedAt   DateTime         @updatedAt
-  fields      FormField[]
-  versions    FormVersion[]
-  assignments FormAssignment[]
+  fields       FormField[]
+  versions     FormVersion[]
+  assignments  FormAssignment[]
+  editRequests EditRequest[]
 }
 
 model FormField {
@@ -153,4 +160,16 @@ model FormResponse {
   submittedAt DateTime    @default(now())
 
   @@unique([versionId, employeeId])
+}
+
+model EditRequest {
+  id          String            @id @default(cuid())
+  employee    Employee          @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  employeeId  String
+  form        Form              @relation(fields: [formId], references: [id], onDelete: Cascade)
+  formId      String
+  description String
+  status      EditRequestStatus @default(OPEN)
+  createdAt   DateTime          @default(now())
+  closedAt    DateTime?
 }

@@ -1,7 +1,13 @@
 import { db } from '@/lib/db'
-import type { FormAnswers } from '../schemas/form-field.types'
+import type { FieldDTO, FormAnswers } from '../schemas/form-field.types'
 import type { FormVersionDTO } from './form-version.service'
-import { getAllVersionsForForm } from './form-version.service'
+import { getAllVersionsForForm, getVersionById } from './form-version.service'
+
+export type ExportDataDTO = {
+  version: FormVersionDTO
+  fields: FieldDTO[]
+  responses: FormResponseDTO[]
+}
 
 export type FormResponseDTO = {
   id: string
@@ -102,6 +108,13 @@ export async function getResponsesForVersion(versionId: string): Promise<FormRes
     longitude: r.longitude,
     submittedAt: r.submittedAt.toISOString(),
   }))
+}
+
+export async function getExportDataForVersion(versionId: string): Promise<ExportDataDTO | null> {
+  const version = await getVersionById(versionId)
+  if (!version) return null
+  const responses = await getResponsesForVersion(versionId)
+  return { version, fields: version.fields, responses }
 }
 
 export async function getResponsesForForm(

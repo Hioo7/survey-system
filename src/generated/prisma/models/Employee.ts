@@ -186,6 +186,7 @@ export type EmployeeWhereInput = {
   sessions?: Prisma.EmployeeSessionListRelationFilter
   assignments?: Prisma.FormAssignmentListRelationFilter
   responses?: Prisma.FormResponseListRelationFilter
+  editRequests?: Prisma.EditRequestListRelationFilter
 }
 
 export type EmployeeOrderByWithRelationInput = {
@@ -198,6 +199,7 @@ export type EmployeeOrderByWithRelationInput = {
   sessions?: Prisma.EmployeeSessionOrderByRelationAggregateInput
   assignments?: Prisma.FormAssignmentOrderByRelationAggregateInput
   responses?: Prisma.FormResponseOrderByRelationAggregateInput
+  editRequests?: Prisma.EditRequestOrderByRelationAggregateInput
 }
 
 export type EmployeeWhereUniqueInput = Prisma.AtLeast<{
@@ -213,6 +215,7 @@ export type EmployeeWhereUniqueInput = Prisma.AtLeast<{
   sessions?: Prisma.EmployeeSessionListRelationFilter
   assignments?: Prisma.FormAssignmentListRelationFilter
   responses?: Prisma.FormResponseListRelationFilter
+  editRequests?: Prisma.EditRequestListRelationFilter
 }, "id" | "email">
 
 export type EmployeeOrderByWithAggregationInput = {
@@ -247,6 +250,7 @@ export type EmployeeCreateInput = {
   sessions?: Prisma.EmployeeSessionCreateNestedManyWithoutEmployeeInput
   assignments?: Prisma.FormAssignmentCreateNestedManyWithoutEmployeeInput
   responses?: Prisma.FormResponseCreateNestedManyWithoutEmployeeInput
+  editRequests?: Prisma.EditRequestCreateNestedManyWithoutEmployeeInput
 }
 
 export type EmployeeUncheckedCreateInput = {
@@ -259,6 +263,7 @@ export type EmployeeUncheckedCreateInput = {
   sessions?: Prisma.EmployeeSessionUncheckedCreateNestedManyWithoutEmployeeInput
   assignments?: Prisma.FormAssignmentUncheckedCreateNestedManyWithoutEmployeeInput
   responses?: Prisma.FormResponseUncheckedCreateNestedManyWithoutEmployeeInput
+  editRequests?: Prisma.EditRequestUncheckedCreateNestedManyWithoutEmployeeInput
 }
 
 export type EmployeeUpdateInput = {
@@ -271,6 +276,7 @@ export type EmployeeUpdateInput = {
   sessions?: Prisma.EmployeeSessionUpdateManyWithoutEmployeeNestedInput
   assignments?: Prisma.FormAssignmentUpdateManyWithoutEmployeeNestedInput
   responses?: Prisma.FormResponseUpdateManyWithoutEmployeeNestedInput
+  editRequests?: Prisma.EditRequestUpdateManyWithoutEmployeeNestedInput
 }
 
 export type EmployeeUncheckedUpdateInput = {
@@ -283,6 +289,7 @@ export type EmployeeUncheckedUpdateInput = {
   sessions?: Prisma.EmployeeSessionUncheckedUpdateManyWithoutEmployeeNestedInput
   assignments?: Prisma.FormAssignmentUncheckedUpdateManyWithoutEmployeeNestedInput
   responses?: Prisma.FormResponseUncheckedUpdateManyWithoutEmployeeNestedInput
+  editRequests?: Prisma.EditRequestUncheckedUpdateManyWithoutEmployeeNestedInput
 }
 
 export type EmployeeCreateManyInput = {
@@ -394,6 +401,20 @@ export type EmployeeUpdateOneRequiredWithoutResponsesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.EmployeeUpdateToOneWithWhereWithoutResponsesInput, Prisma.EmployeeUpdateWithoutResponsesInput>, Prisma.EmployeeUncheckedUpdateWithoutResponsesInput>
 }
 
+export type EmployeeCreateNestedOneWithoutEditRequestsInput = {
+  create?: Prisma.XOR<Prisma.EmployeeCreateWithoutEditRequestsInput, Prisma.EmployeeUncheckedCreateWithoutEditRequestsInput>
+  connectOrCreate?: Prisma.EmployeeCreateOrConnectWithoutEditRequestsInput
+  connect?: Prisma.EmployeeWhereUniqueInput
+}
+
+export type EmployeeUpdateOneRequiredWithoutEditRequestsNestedInput = {
+  create?: Prisma.XOR<Prisma.EmployeeCreateWithoutEditRequestsInput, Prisma.EmployeeUncheckedCreateWithoutEditRequestsInput>
+  connectOrCreate?: Prisma.EmployeeCreateOrConnectWithoutEditRequestsInput
+  upsert?: Prisma.EmployeeUpsertWithoutEditRequestsInput
+  connect?: Prisma.EmployeeWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EmployeeUpdateToOneWithWhereWithoutEditRequestsInput, Prisma.EmployeeUpdateWithoutEditRequestsInput>, Prisma.EmployeeUncheckedUpdateWithoutEditRequestsInput>
+}
+
 export type EmployeeCreateWithoutOtpsInput = {
   id?: string
   name: string
@@ -403,6 +424,7 @@ export type EmployeeCreateWithoutOtpsInput = {
   sessions?: Prisma.EmployeeSessionCreateNestedManyWithoutEmployeeInput
   assignments?: Prisma.FormAssignmentCreateNestedManyWithoutEmployeeInput
   responses?: Prisma.FormResponseCreateNestedManyWithoutEmployeeInput
+  editRequests?: Prisma.EditRequestCreateNestedManyWithoutEmployeeInput
 }
 
 export type EmployeeUncheckedCreateWithoutOtpsInput = {
@@ -414,6 +436,7 @@ export type EmployeeUncheckedCreateWithoutOtpsInput = {
   sessions?: Prisma.EmployeeSessionUncheckedCreateNestedManyWithoutEmployeeInput
   assignments?: Prisma.FormAssignmentUncheckedCreateNestedManyWithoutEmployeeInput
   responses?: Prisma.FormResponseUncheckedCreateNestedManyWithoutEmployeeInput
+  editRequests?: Prisma.EditRequestUncheckedCreateNestedManyWithoutEmployeeInput
 }
 
 export type EmployeeCreateOrConnectWithoutOtpsInput = {
@@ -441,6 +464,7 @@ export type EmployeeUpdateWithoutOtpsInput = {
   sessions?: Prisma.EmployeeSessionUpdateManyWithoutEmployeeNestedInput
   assignments?: Prisma.FormAssignmentUpdateManyWithoutEmployeeNestedInput
   responses?: Prisma.FormResponseUpdateManyWithoutEmployeeNestedInput
+  editRequests?: Prisma.EditRequestUpdateManyWithoutEmployeeNestedInput
 }
 
 export type EmployeeUncheckedUpdateWithoutOtpsInput = {
@@ -452,6 +476,7 @@ export type EmployeeUncheckedUpdateWithoutOtpsInput = {
   sessions?: Prisma.EmployeeSessionUncheckedUpdateManyWithoutEmployeeNestedInput
   assignments?: Prisma.FormAssignmentUncheckedUpdateManyWithoutEmployeeNestedInput
   responses?: Prisma.FormResponseUncheckedUpdateManyWithoutEmployeeNestedInput
+  editRequests?: Prisma.EditRequestUncheckedUpdateManyWithoutEmployeeNestedInput
 }
 
 export type EmployeeCreateWithoutSessionsInput = {
@@ -463,6 +488,7 @@ export type EmployeeCreateWithoutSessionsInput = {
   otps?: Prisma.EmployeeOTPCreateNestedManyWithoutEmployeeInput
   assignments?: Prisma.FormAssignmentCreateNestedManyWithoutEmployeeInput
   responses?: Prisma.FormResponseCreateNestedManyWithoutEmployeeInput
+  editRequests?: Prisma.EditRequestCreateNestedManyWithoutEmployeeInput
 }
 
 export type EmployeeUncheckedCreateWithoutSessionsInput = {
@@ -474,6 +500,7 @@ export type EmployeeUncheckedCreateWithoutSessionsInput = {
   otps?: Prisma.EmployeeOTPUncheckedCreateNestedManyWithoutEmployeeInput
   assignments?: Prisma.FormAssignmentUncheckedCreateNestedManyWithoutEmployeeInput
   responses?: Prisma.FormResponseUncheckedCreateNestedManyWithoutEmployeeInput
+  editRequests?: Prisma.EditRequestUncheckedCreateNestedManyWithoutEmployeeInput
 }
 
 export type EmployeeCreateOrConnectWithoutSessionsInput = {
@@ -501,6 +528,7 @@ export type EmployeeUpdateWithoutSessionsInput = {
   otps?: Prisma.EmployeeOTPUpdateManyWithoutEmployeeNestedInput
   assignments?: Prisma.FormAssignmentUpdateManyWithoutEmployeeNestedInput
   responses?: Prisma.FormResponseUpdateManyWithoutEmployeeNestedInput
+  editRequests?: Prisma.EditRequestUpdateManyWithoutEmployeeNestedInput
 }
 
 export type EmployeeUncheckedUpdateWithoutSessionsInput = {
@@ -512,6 +540,7 @@ export type EmployeeUncheckedUpdateWithoutSessionsInput = {
   otps?: Prisma.EmployeeOTPUncheckedUpdateManyWithoutEmployeeNestedInput
   assignments?: Prisma.FormAssignmentUncheckedUpdateManyWithoutEmployeeNestedInput
   responses?: Prisma.FormResponseUncheckedUpdateManyWithoutEmployeeNestedInput
+  editRequests?: Prisma.EditRequestUncheckedUpdateManyWithoutEmployeeNestedInput
 }
 
 export type EmployeeCreateWithoutAssignmentsInput = {
@@ -523,6 +552,7 @@ export type EmployeeCreateWithoutAssignmentsInput = {
   otps?: Prisma.EmployeeOTPCreateNestedManyWithoutEmployeeInput
   sessions?: Prisma.EmployeeSessionCreateNestedManyWithoutEmployeeInput
   responses?: Prisma.FormResponseCreateNestedManyWithoutEmployeeInput
+  editRequests?: Prisma.EditRequestCreateNestedManyWithoutEmployeeInput
 }
 
 export type EmployeeUncheckedCreateWithoutAssignmentsInput = {
@@ -534,6 +564,7 @@ export type EmployeeUncheckedCreateWithoutAssignmentsInput = {
   otps?: Prisma.EmployeeOTPUncheckedCreateNestedManyWithoutEmployeeInput
   sessions?: Prisma.EmployeeSessionUncheckedCreateNestedManyWithoutEmployeeInput
   responses?: Prisma.FormResponseUncheckedCreateNestedManyWithoutEmployeeInput
+  editRequests?: Prisma.EditRequestUncheckedCreateNestedManyWithoutEmployeeInput
 }
 
 export type EmployeeCreateOrConnectWithoutAssignmentsInput = {
@@ -561,6 +592,7 @@ export type EmployeeUpdateWithoutAssignmentsInput = {
   otps?: Prisma.EmployeeOTPUpdateManyWithoutEmployeeNestedInput
   sessions?: Prisma.EmployeeSessionUpdateManyWithoutEmployeeNestedInput
   responses?: Prisma.FormResponseUpdateManyWithoutEmployeeNestedInput
+  editRequests?: Prisma.EditRequestUpdateManyWithoutEmployeeNestedInput
 }
 
 export type EmployeeUncheckedUpdateWithoutAssignmentsInput = {
@@ -572,6 +604,7 @@ export type EmployeeUncheckedUpdateWithoutAssignmentsInput = {
   otps?: Prisma.EmployeeOTPUncheckedUpdateManyWithoutEmployeeNestedInput
   sessions?: Prisma.EmployeeSessionUncheckedUpdateManyWithoutEmployeeNestedInput
   responses?: Prisma.FormResponseUncheckedUpdateManyWithoutEmployeeNestedInput
+  editRequests?: Prisma.EditRequestUncheckedUpdateManyWithoutEmployeeNestedInput
 }
 
 export type EmployeeCreateWithoutResponsesInput = {
@@ -583,6 +616,7 @@ export type EmployeeCreateWithoutResponsesInput = {
   otps?: Prisma.EmployeeOTPCreateNestedManyWithoutEmployeeInput
   sessions?: Prisma.EmployeeSessionCreateNestedManyWithoutEmployeeInput
   assignments?: Prisma.FormAssignmentCreateNestedManyWithoutEmployeeInput
+  editRequests?: Prisma.EditRequestCreateNestedManyWithoutEmployeeInput
 }
 
 export type EmployeeUncheckedCreateWithoutResponsesInput = {
@@ -594,6 +628,7 @@ export type EmployeeUncheckedCreateWithoutResponsesInput = {
   otps?: Prisma.EmployeeOTPUncheckedCreateNestedManyWithoutEmployeeInput
   sessions?: Prisma.EmployeeSessionUncheckedCreateNestedManyWithoutEmployeeInput
   assignments?: Prisma.FormAssignmentUncheckedCreateNestedManyWithoutEmployeeInput
+  editRequests?: Prisma.EditRequestUncheckedCreateNestedManyWithoutEmployeeInput
 }
 
 export type EmployeeCreateOrConnectWithoutResponsesInput = {
@@ -621,6 +656,7 @@ export type EmployeeUpdateWithoutResponsesInput = {
   otps?: Prisma.EmployeeOTPUpdateManyWithoutEmployeeNestedInput
   sessions?: Prisma.EmployeeSessionUpdateManyWithoutEmployeeNestedInput
   assignments?: Prisma.FormAssignmentUpdateManyWithoutEmployeeNestedInput
+  editRequests?: Prisma.EditRequestUpdateManyWithoutEmployeeNestedInput
 }
 
 export type EmployeeUncheckedUpdateWithoutResponsesInput = {
@@ -632,6 +668,71 @@ export type EmployeeUncheckedUpdateWithoutResponsesInput = {
   otps?: Prisma.EmployeeOTPUncheckedUpdateManyWithoutEmployeeNestedInput
   sessions?: Prisma.EmployeeSessionUncheckedUpdateManyWithoutEmployeeNestedInput
   assignments?: Prisma.FormAssignmentUncheckedUpdateManyWithoutEmployeeNestedInput
+  editRequests?: Prisma.EditRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+}
+
+export type EmployeeCreateWithoutEditRequestsInput = {
+  id?: string
+  name: string
+  email: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  otps?: Prisma.EmployeeOTPCreateNestedManyWithoutEmployeeInput
+  sessions?: Prisma.EmployeeSessionCreateNestedManyWithoutEmployeeInput
+  assignments?: Prisma.FormAssignmentCreateNestedManyWithoutEmployeeInput
+  responses?: Prisma.FormResponseCreateNestedManyWithoutEmployeeInput
+}
+
+export type EmployeeUncheckedCreateWithoutEditRequestsInput = {
+  id?: string
+  name: string
+  email: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  otps?: Prisma.EmployeeOTPUncheckedCreateNestedManyWithoutEmployeeInput
+  sessions?: Prisma.EmployeeSessionUncheckedCreateNestedManyWithoutEmployeeInput
+  assignments?: Prisma.FormAssignmentUncheckedCreateNestedManyWithoutEmployeeInput
+  responses?: Prisma.FormResponseUncheckedCreateNestedManyWithoutEmployeeInput
+}
+
+export type EmployeeCreateOrConnectWithoutEditRequestsInput = {
+  where: Prisma.EmployeeWhereUniqueInput
+  create: Prisma.XOR<Prisma.EmployeeCreateWithoutEditRequestsInput, Prisma.EmployeeUncheckedCreateWithoutEditRequestsInput>
+}
+
+export type EmployeeUpsertWithoutEditRequestsInput = {
+  update: Prisma.XOR<Prisma.EmployeeUpdateWithoutEditRequestsInput, Prisma.EmployeeUncheckedUpdateWithoutEditRequestsInput>
+  create: Prisma.XOR<Prisma.EmployeeCreateWithoutEditRequestsInput, Prisma.EmployeeUncheckedCreateWithoutEditRequestsInput>
+  where?: Prisma.EmployeeWhereInput
+}
+
+export type EmployeeUpdateToOneWithWhereWithoutEditRequestsInput = {
+  where?: Prisma.EmployeeWhereInput
+  data: Prisma.XOR<Prisma.EmployeeUpdateWithoutEditRequestsInput, Prisma.EmployeeUncheckedUpdateWithoutEditRequestsInput>
+}
+
+export type EmployeeUpdateWithoutEditRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  otps?: Prisma.EmployeeOTPUpdateManyWithoutEmployeeNestedInput
+  sessions?: Prisma.EmployeeSessionUpdateManyWithoutEmployeeNestedInput
+  assignments?: Prisma.FormAssignmentUpdateManyWithoutEmployeeNestedInput
+  responses?: Prisma.FormResponseUpdateManyWithoutEmployeeNestedInput
+}
+
+export type EmployeeUncheckedUpdateWithoutEditRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  otps?: Prisma.EmployeeOTPUncheckedUpdateManyWithoutEmployeeNestedInput
+  sessions?: Prisma.EmployeeSessionUncheckedUpdateManyWithoutEmployeeNestedInput
+  assignments?: Prisma.FormAssignmentUncheckedUpdateManyWithoutEmployeeNestedInput
+  responses?: Prisma.FormResponseUncheckedUpdateManyWithoutEmployeeNestedInput
 }
 
 
@@ -644,6 +745,7 @@ export type EmployeeCountOutputType = {
   sessions: number
   assignments: number
   responses: number
+  editRequests: number
 }
 
 export type EmployeeCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -651,6 +753,7 @@ export type EmployeeCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensio
   sessions?: boolean | EmployeeCountOutputTypeCountSessionsArgs
   assignments?: boolean | EmployeeCountOutputTypeCountAssignmentsArgs
   responses?: boolean | EmployeeCountOutputTypeCountResponsesArgs
+  editRequests?: boolean | EmployeeCountOutputTypeCountEditRequestsArgs
 }
 
 /**
@@ -691,6 +794,13 @@ export type EmployeeCountOutputTypeCountResponsesArgs<ExtArgs extends runtime.Ty
   where?: Prisma.FormResponseWhereInput
 }
 
+/**
+ * EmployeeCountOutputType without action
+ */
+export type EmployeeCountOutputTypeCountEditRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.EditRequestWhereInput
+}
+
 
 export type EmployeeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -702,6 +812,7 @@ export type EmployeeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   sessions?: boolean | Prisma.Employee$sessionsArgs<ExtArgs>
   assignments?: boolean | Prisma.Employee$assignmentsArgs<ExtArgs>
   responses?: boolean | Prisma.Employee$responsesArgs<ExtArgs>
+  editRequests?: boolean | Prisma.Employee$editRequestsArgs<ExtArgs>
   _count?: boolean | Prisma.EmployeeCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["employee"]>
 
@@ -735,6 +846,7 @@ export type EmployeeInclude<ExtArgs extends runtime.Types.Extensions.InternalArg
   sessions?: boolean | Prisma.Employee$sessionsArgs<ExtArgs>
   assignments?: boolean | Prisma.Employee$assignmentsArgs<ExtArgs>
   responses?: boolean | Prisma.Employee$responsesArgs<ExtArgs>
+  editRequests?: boolean | Prisma.Employee$editRequestsArgs<ExtArgs>
   _count?: boolean | Prisma.EmployeeCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type EmployeeIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -747,6 +859,7 @@ export type $EmployeePayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     sessions: Prisma.$EmployeeSessionPayload<ExtArgs>[]
     assignments: Prisma.$FormAssignmentPayload<ExtArgs>[]
     responses: Prisma.$FormResponsePayload<ExtArgs>[]
+    editRequests: Prisma.$EditRequestPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1152,6 +1265,7 @@ export interface Prisma__EmployeeClient<T, Null = never, ExtArgs extends runtime
   sessions<T extends Prisma.Employee$sessionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Employee$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EmployeeSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   assignments<T extends Prisma.Employee$assignmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Employee$assignmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FormAssignmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   responses<T extends Prisma.Employee$responsesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Employee$responsesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FormResponsePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  editRequests<T extends Prisma.Employee$editRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Employee$editRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EditRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1672,6 +1786,30 @@ export type Employee$responsesArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   distinct?: Prisma.FormResponseScalarFieldEnum | Prisma.FormResponseScalarFieldEnum[]
+}
+
+/**
+ * Employee.editRequests
+ */
+export type Employee$editRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the EditRequest
+   */
+  select?: Prisma.EditRequestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the EditRequest
+   */
+  omit?: Prisma.EditRequestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EditRequestInclude<ExtArgs> | null
+  where?: Prisma.EditRequestWhereInput
+  orderBy?: Prisma.EditRequestOrderByWithRelationInput | Prisma.EditRequestOrderByWithRelationInput[]
+  cursor?: Prisma.EditRequestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.EditRequestScalarFieldEnum | Prisma.EditRequestScalarFieldEnum[]
 }
 
 /**

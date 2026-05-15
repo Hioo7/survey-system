@@ -60,7 +60,8 @@ export const ModelName = {
   FormVersion: 'FormVersion',
   FormVersionField: 'FormVersionField',
   FormAssignment: 'FormAssignment',
-  FormResponse: 'FormResponse'
+  FormResponse: 'FormResponse',
+  EditRequest: 'EditRequest'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -208,6 +209,19 @@ export const FormResponseScalarFieldEnum = {
 } as const
 
 export type FormResponseScalarFieldEnum = (typeof FormResponseScalarFieldEnum)[keyof typeof FormResponseScalarFieldEnum]
+
+
+export const EditRequestScalarFieldEnum = {
+  id: 'id',
+  employeeId: 'employeeId',
+  formId: 'formId',
+  description: 'description',
+  status: 'status',
+  createdAt: 'createdAt',
+  closedAt: 'closedAt'
+} as const
+
+export type EditRequestScalarFieldEnum = (typeof EditRequestScalarFieldEnum)[keyof typeof EditRequestScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -3,6 +3,10 @@ import { redirect } from 'next/navigation'
 import { verifyToken } from '@/lib/jwt'
 import { getEmployeeById } from '@/features/employees/services/employee.service'
 import { getEmployeeFormsWithStatus } from '@/features/forms/services/form-assignment.service'
+import {
+  getOpenEditRequestsForEmployee,
+  getSubmittedFormsForEmployee,
+} from '@/features/edit-requests/services/edit-request.service'
 import { EmployeeDashboardShell } from '@/features/employees/components/EmployeeDashboardShell'
 
 export default async function EmployeeDashboardLayout({ children }: { children: React.ReactNode }) {
@@ -13,9 +17,11 @@ export default async function EmployeeDashboardLayout({ children }: { children: 
   const payload = await verifyToken(token)
   if (!payload || payload.role !== 'employee') redirect('/staff/login')
 
-  const [employee, assignedForms] = await Promise.all([
+  const [employee, assignedForms, openEditRequests, submittedForms] = await Promise.all([
     getEmployeeById(payload.sub),
     getEmployeeFormsWithStatus(payload.sub),
+    getOpenEditRequestsForEmployee(payload.sub),
+    getSubmittedFormsForEmployee(payload.sub),
   ])
 
   if (!employee) redirect('/staff/login')
@@ -28,6 +34,8 @@ export default async function EmployeeDashboardLayout({ children }: { children: 
       employee={employee}
       sessionValidUntil={midnight.toISOString()}
       assignedForms={assignedForms}
+      initialOpenEditRequests={openEditRequests}
+      submittedForms={submittedForms}
     >
       {children}
     </EmployeeDashboardShell>

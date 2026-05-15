@@ -1,22 +1,27 @@
 'use client'
 
 import { ReactNode, useState } from 'react'
-import { FaClipboardList, FaUserCircle } from 'react-icons/fa'
+import { FaClipboardList, FaUserCircle, FaInbox } from 'react-icons/fa'
 import { EmployeeFormsSection } from '@/features/forms/components/employee/EmployeeFormsSection'
 import { EmployeeProfileSection } from './EmployeeProfileSection'
+import { EmployeeEditRequestsSection } from '@/features/edit-requests/components/employee/EmployeeEditRequestsSection'
 import type { AssignedFormDTO } from '@/features/forms/services/form-assignment.service'
+import type { EditRequestDTO, SubmittedFormDTO } from '@/features/edit-requests/services/edit-request.service'
 
 type EmployeeDashboardShellProps = {
   employee: { name: string; email: string; createdAt: string }
   sessionValidUntil: string
   assignedForms: AssignedFormDTO[]
+  initialOpenEditRequests: EditRequestDTO[]
+  submittedForms: SubmittedFormDTO[]
   children: ReactNode
 }
 
-type Section = 'forms' | 'profile'
+type Section = 'forms' | 'requests' | 'profile'
 
 const NAV_ITEMS: { id: Section; label: string; icon: ReactNode }[] = [
   { id: 'forms', label: 'Forms', icon: <FaClipboardList className="text-[22px]" /> },
+  { id: 'requests', label: 'Requests', icon: <FaInbox className="text-[22px]" /> },
   { id: 'profile', label: 'Profile', icon: <FaUserCircle className="text-[22px]" /> },
 ]
 
@@ -24,6 +29,8 @@ export function EmployeeDashboardShell({
   employee,
   sessionValidUntil,
   assignedForms,
+  initialOpenEditRequests,
+  submittedForms,
 }: EmployeeDashboardShellProps) {
   const [activeSection, setActiveSection] = useState<Section>('forms')
 
@@ -31,9 +38,16 @@ export function EmployeeDashboardShell({
     <div className="min-h-screen bg-slate-50 flex flex-col">
       <main className="flex-1 overflow-y-auto pb-24">
         <div className="max-w-3xl mx-auto px-4 py-6 sm:px-6">
-          {activeSection === 'forms' ? (
+          {activeSection === 'forms' && (
             <EmployeeFormsSection assignedForms={assignedForms} />
-          ) : (
+          )}
+          {activeSection === 'requests' && (
+            <EmployeeEditRequestsSection
+              initialOpenRequests={initialOpenEditRequests}
+              submittedForms={submittedForms}
+            />
+          )}
+          {activeSection === 'profile' && (
             <EmployeeProfileSection employee={employee} sessionValidUntil={sessionValidUntil} />
           )}
         </div>

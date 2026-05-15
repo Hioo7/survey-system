@@ -67,3 +67,8 @@ export type FormAssignment = Prisma.FormAssignmentModel
  * 
  */
 export type FormResponse = Prisma.FormResponseModel
+/**
+ * Model EditRequest
+ * 
+ */
+export type EditRequest = Prisma.EditRequestModel

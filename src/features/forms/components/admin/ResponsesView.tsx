@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useState, useTransition } from 'react'
-import { FaArrowLeft, FaChevronDown, FaChevronUp, FaClipboardList, FaMapMarkerAlt, FaPencilAlt, FaTimes } from 'react-icons/fa'
+import { FaArrowLeft, FaChevronDown, FaChevronUp, FaClipboardList, FaFileExcel, FaMapMarkerAlt, FaPencilAlt, FaTimes } from 'react-icons/fa'
 import { getFormResponsesAction } from '@/features/forms/actions/form-admin.action'
 import type { FormDTO } from '@/features/forms/services/form.service'
 import type { FormResponseByVersionDTO, FormResponseDTO } from '@/features/forms/services/form-response.service'
@@ -42,14 +42,24 @@ export function ResponsesView({ form, onBack }: ResponsesViewProps) {
         <button
           type="button"
           onClick={onBack}
-          className="w-9 h-9 flex items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-100 transition-colors"
+          className="w-9 h-9 flex items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-100 transition-colors shrink-0"
         >
           <FaArrowLeft className="text-sm" />
         </button>
-        <div>
-          <h2 className="text-lg font-semibold text-slate-900">{form.title}</h2>
+        <div className="flex-1 min-w-0">
+          <h2 className="text-lg font-semibold text-slate-900 truncate">{form.title}</h2>
           <p className="text-sm text-slate-500">Responses</p>
         </div>
+        {data && data.length > 0 && versionData && (
+          <a
+            href={`/api/forms/${form.id}/export?versionId=${data[activeVersion].version.id}`}
+            className="flex items-center gap-2 px-3 py-2 sm:px-4 rounded-xl bg-emerald-600 text-white text-sm font-medium hover:bg-emerald-700 active:bg-emerald-800 transition-colors min-h-[44px] shrink-0"
+            title={`Export Version ${data[activeVersion].version.versionNumber} to Excel`}
+          >
+            <FaFileExcel className="text-base shrink-0" />
+            <span className="hidden sm:inline">Export</span>
+          </a>
+        )}
       </div>
 
       {isPending && (

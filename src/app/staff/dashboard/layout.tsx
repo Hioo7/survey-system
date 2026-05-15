@@ -5,6 +5,7 @@ import { getAllEmployees } from '@/features/employees/services/employee.service'
 import { getSuperUserById } from '@/features/super-admin/services/profile.service'
 import { getActiveOtps } from '@/features/employees/services/otp.service'
 import { getAllForms } from '@/features/forms/services/form.service'
+import { getOpenEditRequests, getClosedEditRequests } from '@/features/edit-requests/services/edit-request.service'
 import { DashboardShell } from '@/features/super-admin/components/DashboardShell'
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
@@ -15,12 +16,15 @@ export default async function DashboardLayout({ children }: { children: React.Re
   const payload = await verifyToken(token)
   if (!payload) redirect('/staff/login')
 
-  const [employees, superUser, activeOtps, forms] = await Promise.all([
-    getAllEmployees(),
-    getSuperUserById(payload.sub),
-    getActiveOtps(),
-    getAllForms(),
-  ])
+  const [employees, superUser, activeOtps, forms, openEditRequests, closedEditRequests] =
+    await Promise.all([
+      getAllEmployees(),
+      getSuperUserById(payload.sub),
+      getActiveOtps(),
+      getAllForms(),
+      getOpenEditRequests(),
+      getClosedEditRequests(),
+    ])
 
   if (!superUser) redirect('/staff/login')
 
@@ -30,6 +34,8 @@ export default async function DashboardLayout({ children }: { children: React.Re
       initialOtps={activeOtps}
       superUserEmail={superUser.email}
       initialForms={forms}
+      initialOpenEditRequests={openEditRequests}
+      initialClosedEditRequests={closedEditRequests}
     >
       {children}
     </DashboardShell>

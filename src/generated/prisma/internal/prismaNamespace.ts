@@ -393,7 +393,8 @@ export const ModelName = {
   FormVersion: 'FormVersion',
   FormVersionField: 'FormVersionField',
   FormAssignment: 'FormAssignment',
-  FormResponse: 'FormResponse'
+  FormResponse: 'FormResponse',
+  EditRequest: 'EditRequest'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -409,7 +410,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "superUser" | "employee" | "employeeOTP" | "employeeSession" | "form" | "formField" | "formVersion" | "formVersionField" | "formAssignment" | "formResponse"
+    modelProps: "superUser" | "employee" | "employeeOTP" | "employeeSession" | "form" | "formField" | "formVersion" | "formVersionField" | "formAssignment" | "formResponse" | "editRequest"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1153,6 +1154,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    EditRequest: {
+      payload: Prisma.$EditRequestPayload<ExtArgs>
+      fields: Prisma.EditRequestFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.EditRequestFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EditRequestPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.EditRequestFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EditRequestPayload>
+        }
+        findFirst: {
+          args: Prisma.EditRequestFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EditRequestPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.EditRequestFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EditRequestPayload>
+        }
+        findMany: {
+          args: Prisma.EditRequestFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EditRequestPayload>[]
+        }
+        create: {
+          args: Prisma.EditRequestCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EditRequestPayload>
+        }
+        createMany: {
+          args: Prisma.EditRequestCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.EditRequestCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EditRequestPayload>[]
+        }
+        delete: {
+          args: Prisma.EditRequestDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EditRequestPayload>
+        }
+        update: {
+          args: Prisma.EditRequestUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EditRequestPayload>
+        }
+        deleteMany: {
+          args: Prisma.EditRequestDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.EditRequestUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.EditRequestUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EditRequestPayload>[]
+        }
+        upsert: {
+          args: Prisma.EditRequestUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EditRequestPayload>
+        }
+        aggregate: {
+          args: Prisma.EditRequestAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateEditRequest>
+        }
+        groupBy: {
+          args: Prisma.EditRequestGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EditRequestGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.EditRequestCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EditRequestCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1323,6 +1398,19 @@ export const FormResponseScalarFieldEnum = {
 export type FormResponseScalarFieldEnum = (typeof FormResponseScalarFieldEnum)[keyof typeof FormResponseScalarFieldEnum]
 
 
+export const EditRequestScalarFieldEnum = {
+  id: 'id',
+  employeeId: 'employeeId',
+  formId: 'formId',
+  description: 'description',
+  status: 'status',
+  createdAt: 'createdAt',
+  closedAt: 'closedAt'
+} as const
+
+export type EditRequestScalarFieldEnum = (typeof EditRequestScalarFieldEnum)[keyof typeof EditRequestScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1473,6 +1561,20 @@ export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'J
 export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
     
 
+
+/**
+ * Reference to a field of type 'EditRequestStatus'
+ */
+export type EnumEditRequestStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EditRequestStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'EditRequestStatus[]'
+ */
+export type ListEnumEditRequestStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EditRequestStatus[]'>
+    
+
 /**
  * Batch Payload for updateMany & deleteMany & createMany
  */
@@ -1593,6 +1695,7 @@ export type GlobalOmitConfig = {
   formVersionField?: Prisma.FormVersionFieldOmit
   formAssignment?: Prisma.FormAssignmentOmit
   formResponse?: Prisma.FormResponseOmit
+  editRequest?: Prisma.EditRequestOmit
 }
 
 /* Types for Logging */

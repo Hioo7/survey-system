@@ -1,12 +1,14 @@
 'use client'
 
 import { ReactNode, useState } from 'react'
-import { FaUsers, FaUserCircle, FaClipboardList } from 'react-icons/fa'
+import { FaUsers, FaUserCircle, FaClipboardList, FaInbox } from 'react-icons/fa'
 import { UsersSection } from '@/features/employees/components/UsersSection'
 import { ProfileSection } from './ProfileSection'
 import { FormsSection } from '@/features/forms/components/admin/FormsSection'
+import { AdminEditRequestsSection } from '@/features/edit-requests/components/admin/AdminEditRequestsSection'
 import type { ActiveOtpDTO } from '@/features/employees/services/otp.service'
 import type { FormDTO } from '@/features/forms/services/form.service'
+import type { EditRequestDTO } from '@/features/edit-requests/services/edit-request.service'
 
 type EmployeeDTO = { id: string; name: string; email: string; createdAt: string }
 
@@ -15,14 +17,17 @@ type DashboardShellProps = {
   initialOtps: ActiveOtpDTO[]
   superUserEmail: string
   initialForms: FormDTO[]
+  initialOpenEditRequests: EditRequestDTO[]
+  initialClosedEditRequests: EditRequestDTO[]
   children: ReactNode
 }
 
-type Section = 'users' | 'forms' | 'profile'
+type Section = 'users' | 'forms' | 'requests' | 'profile'
 
 const NAV_ITEMS: { id: Section; label: string; icon: ReactNode }[] = [
   { id: 'users', label: 'Users', icon: <FaUsers className="text-[22px]" /> },
   { id: 'forms', label: 'Forms', icon: <FaClipboardList className="text-[22px]" /> },
+  { id: 'requests', label: 'Requests', icon: <FaInbox className="text-[22px]" /> },
   { id: 'profile', label: 'Profile', icon: <FaUserCircle className="text-[22px]" /> },
 ]
 
@@ -31,6 +36,8 @@ export function DashboardShell({
   initialOtps,
   superUserEmail,
   initialForms,
+  initialOpenEditRequests,
+  initialClosedEditRequests,
 }: DashboardShellProps) {
   const [activeSection, setActiveSection] = useState<Section>('users')
 
@@ -45,6 +52,12 @@ export function DashboardShell({
           {activeSection === 'forms' && (
             <FormsSection initialForms={initialForms} employees={initialEmployees} />
           )}
+          {activeSection === 'requests' && (
+            <AdminEditRequestsSection
+              initialOpenRequests={initialOpenEditRequests}
+              initialClosedRequests={initialClosedEditRequests}
+            />
+          )}
           {activeSection === 'profile' && (
             <ProfileSection superUserEmail={superUserEmail} />
           )}
@@ -56,6 +69,8 @@ export function DashboardShell({
         <div className="flex max-w-3xl mx-auto">
           {NAV_ITEMS.map((item) => {
             const isActive = activeSection === item.id
+            const showBadge =
+              item.id === 'requests' && initialOpenEditRequests.length > 0
             return (
               <button
                 key={item.id}
@@ -70,7 +85,12 @@ export function DashboardShell({
                 {isActive && (
                   <span className="absolute top-0 left-1/2 -translate-x-1/2 w-10 h-0.5 bg-slate-900 rounded-full" />
                 )}
-                {item.icon}
+                <span className="relative">
+                  {item.icon}
+                  {showBadge && (
+                    <span className="absolute -top-1 -right-1.5 w-2 h-2 rounded-full bg-red-500" />
+                  )}
+                </span>
                 <span className={['text-xs font-medium', isActive ? 'text-slate-900' : ''].join(' ')}>
                   {item.label}
                 </span>

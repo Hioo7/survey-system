@@ -193,6 +193,7 @@ export type FormWhereInput = {
   fields?: Prisma.FormFieldListRelationFilter
   versions?: Prisma.FormVersionListRelationFilter
   assignments?: Prisma.FormAssignmentListRelationFilter
+  editRequests?: Prisma.EditRequestListRelationFilter
 }
 
 export type FormOrderByWithRelationInput = {
@@ -205,6 +206,7 @@ export type FormOrderByWithRelationInput = {
   fields?: Prisma.FormFieldOrderByRelationAggregateInput
   versions?: Prisma.FormVersionOrderByRelationAggregateInput
   assignments?: Prisma.FormAssignmentOrderByRelationAggregateInput
+  editRequests?: Prisma.EditRequestOrderByRelationAggregateInput
 }
 
 export type FormWhereUniqueInput = Prisma.AtLeast<{
@@ -220,6 +222,7 @@ export type FormWhereUniqueInput = Prisma.AtLeast<{
   fields?: Prisma.FormFieldListRelationFilter
   versions?: Prisma.FormVersionListRelationFilter
   assignments?: Prisma.FormAssignmentListRelationFilter
+  editRequests?: Prisma.EditRequestListRelationFilter
 }, "id">
 
 export type FormOrderByWithAggregationInput = {
@@ -256,6 +259,7 @@ export type FormCreateInput = {
   fields?: Prisma.FormFieldCreateNestedManyWithoutFormInput
   versions?: Prisma.FormVersionCreateNestedManyWithoutFormInput
   assignments?: Prisma.FormAssignmentCreateNestedManyWithoutFormInput
+  editRequests?: Prisma.EditRequestCreateNestedManyWithoutFormInput
 }
 
 export type FormUncheckedCreateInput = {
@@ -268,6 +272,7 @@ export type FormUncheckedCreateInput = {
   fields?: Prisma.FormFieldUncheckedCreateNestedManyWithoutFormInput
   versions?: Prisma.FormVersionUncheckedCreateNestedManyWithoutFormInput
   assignments?: Prisma.FormAssignmentUncheckedCreateNestedManyWithoutFormInput
+  editRequests?: Prisma.EditRequestUncheckedCreateNestedManyWithoutFormInput
 }
 
 export type FormUpdateInput = {
@@ -280,6 +285,7 @@ export type FormUpdateInput = {
   fields?: Prisma.FormFieldUpdateManyWithoutFormNestedInput
   versions?: Prisma.FormVersionUpdateManyWithoutFormNestedInput
   assignments?: Prisma.FormAssignmentUpdateManyWithoutFormNestedInput
+  editRequests?: Prisma.EditRequestUpdateManyWithoutFormNestedInput
 }
 
 export type FormUncheckedUpdateInput = {
@@ -292,6 +298,7 @@ export type FormUncheckedUpdateInput = {
   fields?: Prisma.FormFieldUncheckedUpdateManyWithoutFormNestedInput
   versions?: Prisma.FormVersionUncheckedUpdateManyWithoutFormNestedInput
   assignments?: Prisma.FormAssignmentUncheckedUpdateManyWithoutFormNestedInput
+  editRequests?: Prisma.EditRequestUncheckedUpdateManyWithoutFormNestedInput
 }
 
 export type FormCreateManyInput = {
@@ -399,6 +406,20 @@ export type FormUpdateOneRequiredWithoutAssignmentsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.FormUpdateToOneWithWhereWithoutAssignmentsInput, Prisma.FormUpdateWithoutAssignmentsInput>, Prisma.FormUncheckedUpdateWithoutAssignmentsInput>
 }
 
+export type FormCreateNestedOneWithoutEditRequestsInput = {
+  create?: Prisma.XOR<Prisma.FormCreateWithoutEditRequestsInput, Prisma.FormUncheckedCreateWithoutEditRequestsInput>
+  connectOrCreate?: Prisma.FormCreateOrConnectWithoutEditRequestsInput
+  connect?: Prisma.FormWhereUniqueInput
+}
+
+export type FormUpdateOneRequiredWithoutEditRequestsNestedInput = {
+  create?: Prisma.XOR<Prisma.FormCreateWithoutEditRequestsInput, Prisma.FormUncheckedCreateWithoutEditRequestsInput>
+  connectOrCreate?: Prisma.FormCreateOrConnectWithoutEditRequestsInput
+  upsert?: Prisma.FormUpsertWithoutEditRequestsInput
+  connect?: Prisma.FormWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.FormUpdateToOneWithWhereWithoutEditRequestsInput, Prisma.FormUpdateWithoutEditRequestsInput>, Prisma.FormUncheckedUpdateWithoutEditRequestsInput>
+}
+
 export type FormCreateWithoutFieldsInput = {
   id?: string
   title: string
@@ -408,6 +429,7 @@ export type FormCreateWithoutFieldsInput = {
   updatedAt?: Date | string
   versions?: Prisma.FormVersionCreateNestedManyWithoutFormInput
   assignments?: Prisma.FormAssignmentCreateNestedManyWithoutFormInput
+  editRequests?: Prisma.EditRequestCreateNestedManyWithoutFormInput
 }
 
 export type FormUncheckedCreateWithoutFieldsInput = {
@@ -419,6 +441,7 @@ export type FormUncheckedCreateWithoutFieldsInput = {
   updatedAt?: Date | string
   versions?: Prisma.FormVersionUncheckedCreateNestedManyWithoutFormInput
   assignments?: Prisma.FormAssignmentUncheckedCreateNestedManyWithoutFormInput
+  editRequests?: Prisma.EditRequestUncheckedCreateNestedManyWithoutFormInput
 }
 
 export type FormCreateOrConnectWithoutFieldsInput = {
@@ -446,6 +469,7 @@ export type FormUpdateWithoutFieldsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   versions?: Prisma.FormVersionUpdateManyWithoutFormNestedInput
   assignments?: Prisma.FormAssignmentUpdateManyWithoutFormNestedInput
+  editRequests?: Prisma.EditRequestUpdateManyWithoutFormNestedInput
 }
 
 export type FormUncheckedUpdateWithoutFieldsInput = {
@@ -457,6 +481,7 @@ export type FormUncheckedUpdateWithoutFieldsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   versions?: Prisma.FormVersionUncheckedUpdateManyWithoutFormNestedInput
   assignments?: Prisma.FormAssignmentUncheckedUpdateManyWithoutFormNestedInput
+  editRequests?: Prisma.EditRequestUncheckedUpdateManyWithoutFormNestedInput
 }
 
 export type FormCreateWithoutVersionsInput = {
@@ -468,6 +493,7 @@ export type FormCreateWithoutVersionsInput = {
   updatedAt?: Date | string
   fields?: Prisma.FormFieldCreateNestedManyWithoutFormInput
   assignments?: Prisma.FormAssignmentCreateNestedManyWithoutFormInput
+  editRequests?: Prisma.EditRequestCreateNestedManyWithoutFormInput
 }
 
 export type FormUncheckedCreateWithoutVersionsInput = {
@@ -479,6 +505,7 @@ export type FormUncheckedCreateWithoutVersionsInput = {
   updatedAt?: Date | string
   fields?: Prisma.FormFieldUncheckedCreateNestedManyWithoutFormInput
   assignments?: Prisma.FormAssignmentUncheckedCreateNestedManyWithoutFormInput
+  editRequests?: Prisma.EditRequestUncheckedCreateNestedManyWithoutFormInput
 }
 
 export type FormCreateOrConnectWithoutVersionsInput = {
@@ -506,6 +533,7 @@ export type FormUpdateWithoutVersionsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fields?: Prisma.FormFieldUpdateManyWithoutFormNestedInput
   assignments?: Prisma.FormAssignmentUpdateManyWithoutFormNestedInput
+  editRequests?: Prisma.EditRequestUpdateManyWithoutFormNestedInput
 }
 
 export type FormUncheckedUpdateWithoutVersionsInput = {
@@ -517,6 +545,7 @@ export type FormUncheckedUpdateWithoutVersionsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fields?: Prisma.FormFieldUncheckedUpdateManyWithoutFormNestedInput
   assignments?: Prisma.FormAssignmentUncheckedUpdateManyWithoutFormNestedInput
+  editRequests?: Prisma.EditRequestUncheckedUpdateManyWithoutFormNestedInput
 }
 
 export type FormCreateWithoutAssignmentsInput = {
@@ -528,6 +557,7 @@ export type FormCreateWithoutAssignmentsInput = {
   updatedAt?: Date | string
   fields?: Prisma.FormFieldCreateNestedManyWithoutFormInput
   versions?: Prisma.FormVersionCreateNestedManyWithoutFormInput
+  editRequests?: Prisma.EditRequestCreateNestedManyWithoutFormInput
 }
 
 export type FormUncheckedCreateWithoutAssignmentsInput = {
@@ -539,6 +569,7 @@ export type FormUncheckedCreateWithoutAssignmentsInput = {
   updatedAt?: Date | string
   fields?: Prisma.FormFieldUncheckedCreateNestedManyWithoutFormInput
   versions?: Prisma.FormVersionUncheckedCreateNestedManyWithoutFormInput
+  editRequests?: Prisma.EditRequestUncheckedCreateNestedManyWithoutFormInput
 }
 
 export type FormCreateOrConnectWithoutAssignmentsInput = {
@@ -566,6 +597,7 @@ export type FormUpdateWithoutAssignmentsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fields?: Prisma.FormFieldUpdateManyWithoutFormNestedInput
   versions?: Prisma.FormVersionUpdateManyWithoutFormNestedInput
+  editRequests?: Prisma.EditRequestUpdateManyWithoutFormNestedInput
 }
 
 export type FormUncheckedUpdateWithoutAssignmentsInput = {
@@ -577,6 +609,71 @@ export type FormUncheckedUpdateWithoutAssignmentsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fields?: Prisma.FormFieldUncheckedUpdateManyWithoutFormNestedInput
   versions?: Prisma.FormVersionUncheckedUpdateManyWithoutFormNestedInput
+  editRequests?: Prisma.EditRequestUncheckedUpdateManyWithoutFormNestedInput
+}
+
+export type FormCreateWithoutEditRequestsInput = {
+  id?: string
+  title: string
+  description?: string
+  status?: $Enums.FormStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  fields?: Prisma.FormFieldCreateNestedManyWithoutFormInput
+  versions?: Prisma.FormVersionCreateNestedManyWithoutFormInput
+  assignments?: Prisma.FormAssignmentCreateNestedManyWithoutFormInput
+}
+
+export type FormUncheckedCreateWithoutEditRequestsInput = {
+  id?: string
+  title: string
+  description?: string
+  status?: $Enums.FormStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  fields?: Prisma.FormFieldUncheckedCreateNestedManyWithoutFormInput
+  versions?: Prisma.FormVersionUncheckedCreateNestedManyWithoutFormInput
+  assignments?: Prisma.FormAssignmentUncheckedCreateNestedManyWithoutFormInput
+}
+
+export type FormCreateOrConnectWithoutEditRequestsInput = {
+  where: Prisma.FormWhereUniqueInput
+  create: Prisma.XOR<Prisma.FormCreateWithoutEditRequestsInput, Prisma.FormUncheckedCreateWithoutEditRequestsInput>
+}
+
+export type FormUpsertWithoutEditRequestsInput = {
+  update: Prisma.XOR<Prisma.FormUpdateWithoutEditRequestsInput, Prisma.FormUncheckedUpdateWithoutEditRequestsInput>
+  create: Prisma.XOR<Prisma.FormCreateWithoutEditRequestsInput, Prisma.FormUncheckedCreateWithoutEditRequestsInput>
+  where?: Prisma.FormWhereInput
+}
+
+export type FormUpdateToOneWithWhereWithoutEditRequestsInput = {
+  where?: Prisma.FormWhereInput
+  data: Prisma.XOR<Prisma.FormUpdateWithoutEditRequestsInput, Prisma.FormUncheckedUpdateWithoutEditRequestsInput>
+}
+
+export type FormUpdateWithoutEditRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumFormStatusFieldUpdateOperationsInput | $Enums.FormStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fields?: Prisma.FormFieldUpdateManyWithoutFormNestedInput
+  versions?: Prisma.FormVersionUpdateManyWithoutFormNestedInput
+  assignments?: Prisma.FormAssignmentUpdateManyWithoutFormNestedInput
+}
+
+export type FormUncheckedUpdateWithoutEditRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumFormStatusFieldUpdateOperationsInput | $Enums.FormStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fields?: Prisma.FormFieldUncheckedUpdateManyWithoutFormNestedInput
+  versions?: Prisma.FormVersionUncheckedUpdateManyWithoutFormNestedInput
+  assignments?: Prisma.FormAssignmentUncheckedUpdateManyWithoutFormNestedInput
 }
 
 
@@ -588,12 +685,14 @@ export type FormCountOutputType = {
   fields: number
   versions: number
   assignments: number
+  editRequests: number
 }
 
 export type FormCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   fields?: boolean | FormCountOutputTypeCountFieldsArgs
   versions?: boolean | FormCountOutputTypeCountVersionsArgs
   assignments?: boolean | FormCountOutputTypeCountAssignmentsArgs
+  editRequests?: boolean | FormCountOutputTypeCountEditRequestsArgs
 }
 
 /**
@@ -627,6 +726,13 @@ export type FormCountOutputTypeCountAssignmentsArgs<ExtArgs extends runtime.Type
   where?: Prisma.FormAssignmentWhereInput
 }
 
+/**
+ * FormCountOutputType without action
+ */
+export type FormCountOutputTypeCountEditRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.EditRequestWhereInput
+}
+
 
 export type FormSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -638,6 +744,7 @@ export type FormSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   fields?: boolean | Prisma.Form$fieldsArgs<ExtArgs>
   versions?: boolean | Prisma.Form$versionsArgs<ExtArgs>
   assignments?: boolean | Prisma.Form$assignmentsArgs<ExtArgs>
+  editRequests?: boolean | Prisma.Form$editRequestsArgs<ExtArgs>
   _count?: boolean | Prisma.FormCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["form"]>
 
@@ -673,6 +780,7 @@ export type FormInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   fields?: boolean | Prisma.Form$fieldsArgs<ExtArgs>
   versions?: boolean | Prisma.Form$versionsArgs<ExtArgs>
   assignments?: boolean | Prisma.Form$assignmentsArgs<ExtArgs>
+  editRequests?: boolean | Prisma.Form$editRequestsArgs<ExtArgs>
   _count?: boolean | Prisma.FormCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type FormIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -684,6 +792,7 @@ export type $FormPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     fields: Prisma.$FormFieldPayload<ExtArgs>[]
     versions: Prisma.$FormVersionPayload<ExtArgs>[]
     assignments: Prisma.$FormAssignmentPayload<ExtArgs>[]
+    editRequests: Prisma.$EditRequestPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1089,6 +1198,7 @@ export interface Prisma__FormClient<T, Null = never, ExtArgs extends runtime.Typ
   fields<T extends Prisma.Form$fieldsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Form$fieldsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FormFieldPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   versions<T extends Prisma.Form$versionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Form$versionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FormVersionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   assignments<T extends Prisma.Form$assignmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Form$assignmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FormAssignmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  editRequests<T extends Prisma.Form$editRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Form$editRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EditRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1586,6 +1696,30 @@ export type Form$assignmentsArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   distinct?: Prisma.FormAssignmentScalarFieldEnum | Prisma.FormAssignmentScalarFieldEnum[]
+}
+
+/**
+ * Form.editRequests
+ */
+export type Form$editRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the EditRequest
+   */
+  select?: Prisma.EditRequestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the EditRequest
+   */
+  omit?: Prisma.EditRequestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EditRequestInclude<ExtArgs> | null
+  where?: Prisma.EditRequestWhereInput
+  orderBy?: Prisma.EditRequestOrderByWithRelationInput | Prisma.EditRequestOrderByWithRelationInput[]
+  cursor?: Prisma.EditRequestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.EditRequestScalarFieldEnum | Prisma.EditRequestScalarFieldEnum[]
 }
 
 /**
